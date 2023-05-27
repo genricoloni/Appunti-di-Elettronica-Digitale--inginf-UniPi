@@ -405,3 +405,7 @@ Viene introdotto un secondo transistore, che svolge la funzione di *enabler* del
 #### Flash EEPROM
 
 Nelle EEPROM, la scrittura e la cancellazione avvengono su singole celle, mentre nelle Flash EEPROM avvengono su blocchi di celle: la scrittura e la cancellazione avvengono sempre per effetto tunnel, ottenendo un numero illimitato, in realtà pari a $10^4 \div 10^4$ di cicli di scrittura e cancellazione. La lettura avviene invece su singole celle, come nelle EEPROM. Con l’evoluzione questo numero tende a crescere, ma si scontra col fatto che si aumentano le memorie con la conseguenza della diminuzione dello spazio.
+
+## Convertitori A/D e D/A
+
+Si faccia riferimento alle [dispense di Piotto](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/II%20SEMESTRE/Elettronica%20digitale/Dispense%20e%20manuali/note_convertitori_piotto.pdf) 
