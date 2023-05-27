@@ -212,19 +212,19 @@ Il circuito di pre carica è un circuito ausiliario che serve per **preparare** 
 
 È formato da tre MOS, dove $Q_1$ e $Q_3$ hanno il *gate* a comune. Il segnale di enable è $\phi_P$: quando esso viene attivato, $Q_1$ e $Q_3$ vengono portati in conduzione, applicando una tensione di $\frac{V_{DD}}{2}$ alle bit line. $Q_2$ entra anch'esso in conduzione, e viene utilizzato come elemento di *sicurezza*, nel senso che si assicura che entrambe le bit line si trovino alla stessa tensione.Finché il circuito di pre carica non viene attivato, la cella di memoria è isolata dalla bit line, e quindi non può essere letta o scritta. Dopo un certo intervallo spengo il circuito di pre carica, e attivo il circuito di *sense amplifier* con il segnale $\phi_S$. Dal punto di vista temporale, il funzionamento è il seguente:
 
-![Grafico di funzionamento del circuito di pre carica](../images/24_LogicaSequenziale/precarica2.jpeg)
+![Grafico di funzionamento del circuito di pre carica](../images/24_LogicaSequenziale/precarica2.jpeg){width=60%}
 
 È essenziale che il circuito di pre carica venga spento prima di attivare $\phi_S$: se così non fosse leggerei una tensione di $\frac{V_{DD}}{2}$ sulla bit line, perdendo quindi il valore logico.
 
 ### DRAM
 
-La DRAM si basa sul concetto di **memoria dinamica**, ovvero una memoria che perde il contenuto se non viene rinfrescata periodicamente. Questo è dovuto al fatto che la cella di memoria è formata da un condensatore, che perde carica nel tempo. LA lettura è inoltre distruttiva, per cui è necessario un meccanismo di riscrittura del dato letto.
+La DRAM si basa sul concetto di **memoria dinamica**, ovvero una memoria che perde il contenuto se non viene rinfrescata periodicamente. Questo è dovuto al fatto che la cella di memoria è formata da un condensatore, che perde carica nel tempo. La lettura è inoltre distruttiva, per cui è necessario un meccanismo di riscrittura del dato letto.
 
 #### La cella di memoria
 
 La cella di memoria è più semplice rispetto a quella della SRAM, ed è formata da un condensatore e da un MOS, che viene utilizzato per leggere e scrivere il valore logico. Il condensatore è poi collegato alla bit line tramite un NMOS, secondo il seguente schema:
 
-![Cella di memoria DRAM](../images/24_LogicaSequenziale/cella.jpeg)
+![Cella di memoria DRAM](../images/24_LogicaSequenziale/cella.jpeg){width=40%}
 
 Si noti come non sia presente la bit line complementare, assenza atta a minimizzare lo spazio occupato, che collima con la minore aria occupata dalla cella di memoria rispetto alla SRA. Infine, la bit line ha inoltre una capacità parassita, indicata con $C_B$.
 
@@ -269,6 +269,8 @@ I circuiti di pre carica e di sense amplifier sono del tutto analoghi a quelli v
 
 I condensatori delle dummy cell vengono caricati a $\frac{V_{DD}}{2}$: al momento dell'attivazione della word line della cella target, viene attivata la dummy cell di destra nel caso in cui la cella da leggere si trovi a sinistra nella bit line, e viceversa. In questo modo agli ingressi del sense amplifier viene presentato un segnale differenziale, che consiste nella differenza tra la tensione determinata in lettura sulla bit line e la tensione di pre carica, che è pari a $\frac{V_{DD}}{2}$: questa differenza è pari a $\Delta V$, come visto in precedenza. Il sense amplifier è quindi in grado di discriminare il valore letto, e di amplificarlo per poterlo utilizzare.
 
+$$\qquad$$
+
 ### Decoder e multiplexer
 
 #### Decoder
@@ -285,7 +287,7 @@ $$
 
 L'obiettivo è quello di realizzare il circuito in forma **wired NOR**, mostrato in figura:
 
-![Decoder wired NOR](../images/24_LogicaSequenziale/decoder.jpeg)
+![Decoder wired NOR](../images/24_LogicaSequenziale/decoder.jpeg){width=50%}
 
 Il PMOS viene messo in conduzione dal segnale $\overline{\phi_P}$ del circuito di pre carica, in modo da caricare tutte le word line; successivamente tutte, meno quella di interesse, verranno scaricate, evitando significative dissipazioni di potenza.
 
@@ -293,4 +295,113 @@ Il PMOS viene messo in conduzione dal segnale $\overline{\phi_P}$ del circuito d
 
 Il circuito utilizzato è analogo a quello già visto: esso piloterà i **transistori di passo**, che mettono in connessione il terminale di I/O con la bit line prescelta. Il circuito è mostrato in figura:
 
-![Multiplexer](../images/24_LogicaSequenziale/multi.jpeg)
+![Multiplexer](../images/24_LogicaSequenziale/multi.jpeg){width=50%}
+
+## Memorie ROM
+
+Le memorie ROM sono memorie di sola lettura, ovvero memorie in cui è possibile solo leggere i dati, ma non scriverli; la sua *programmazione* viene effettuata durante la fabbricazione.
+
+### Memorie ROM con diodi
+
+Concettualemnte, è una memoria ancora più semplice della RAM, in quanto consistente di una matrice di bit line e word line, tra le quali viene **inserito un diodo nel caso si voglia scrivere un valore logico 1**: in assenza del diodo, il valore logico è $0$. Il circuito è mostrato in figura:
+
+![Memoria ROM a diodi](../images/24_LogicaSequenziale/ROM1.jpeg){width=50%}
+
+L'anodo del diodo viene connesso alle word line, mentre il catodo viene connesso alle bit line: quando la word line viene attivata, se il diodo è presente, entra in conduzione, attivando la bit line. Se invece non è presente il diodo, la bit line rimane a potenziale di massa.
+La scelta dei diodi è dovuta al fatto che sono elementi unidirezionali: se ad esempio usassi una resistenza, ponendo il caso di avere più celle ad $1$ sulla stessa riga, si creerebbe un corto circuito tra le due bit line di interesse.
+
+### Memorie ROM con MOS
+
+La modalità a diodi non è l'unico modo per costruire una ROM: infatti, per le implementazioni di una ROM in circuiti integrati, sono preferiti i i MOS.
+
+I transistori PMOS hanno la funzione di **pull-up** per la bit line, che viene invece portata al livello logico basso se nell'intersectione tra word line e bit line è presente un transistor NMOS. Il dispositivo NMOS viene realizzato con un rapporto $\frac{W}{L}$ molto maggiore rispetto a quello del PMOS, in modo da forzare la funzione di pull-down e farla prevalere su quella di pull-up. Il circuito è mostrato in figura:
+
+![Memoria ROM con MOS](../images/24_LogicaSequenziale/ROM2.jpeg){width=50%}
+
+#### Modalità a pre carica
+
+Un'altra modalità di funzionamento che sfrutta sempre i MOS, e che presenta una minore dissipazione oltre che una minore complessità, consiste nel pre caricare la bit line a $\frac{V{DD}}{2}$ tramite il PMOS. Lui stesso verrà poi interdetto prima che venga attivata la word line di interesse: in questo modo, se è presente un NMOS nell'incrocio tra word line e bit line, la bit line verrà scaricata a massa, avendo come risultato di uscita uno $0$ logico. Se invece non è presente un NMOS, la bit line rimarrà a $\frac{V{DD}}{2}$, avendo come risultato di uscita uno $1$ logico. 
+
+#### Fabbriacazione di una ROM
+
+La fabbricazione, e quindi anche la programmazione, non può avvenire posizionando ogni singolo NMOS in ogni singolo incrocio desiderato. Il processo consiste quindi nel posizionare **ad ogni incrocio** un MOS, salvo poi utilizzare una maschera che farà in modo di collegare alla bit line e alla word line **solo gli incroci desiderati**. Tramite questa strategia è possibile abbattere i costi di produzione di questi dispositivi, perchè la fase di 'personalizzazione' della memoria è effettivamente l'ultima da effettuare, e quindi è possibile produrre un unico tipo di memoria, che poi verrà programmata in base alle esigenze.
+
+## ROM programmabili
+
+Rappresentano una versione alternativa alle ROM, in cui è possibile programmare la memoria anche dopo la sua fabbricazione. Ne esistono di tre tipi:
+
+* **PROM**: Programmable ROM, che consentono di programmare la memoria una sola volta;
+* **EPROM**: Erasable PROM, memorie programmabili elettricamente che possono essere cancellate e programmate più volte;
+* **EEPROM**: Electrically Erasable PROM, memorie programmabili elettricamente che possono essere cancellate e programmate più volte, ma che non richiedono l'utilizzo di radiazioni UV per la cancellazione.
+
+### PROM
+
+La realizzazione di una PROM è molto semplice: essa consiste di una matrice di MOS, in cui ogni NMOS è collegato alla relativa word line e alla bit line tramite un fusibile. Facendo scorrere una correte elevata, il fusibile si rompe, interrompendo la connessione tra NMOS e bit line.
+
+### EPROM
+
+Le EPROM hanno struttura equivalente a quella di una ROM a MOS, ma ne utilizza alcuni particolari, che hanno **due gate sovrapposti**:
+
+![MOS con gate sovrapposti](../images/24_LogicaSequenziale/EPROM.jpeg){width=50%}
+
+Il gate superiori è collegato al terminale esterno di gate, e svolge la normale funzione di gate. Il secondo gate, chiamato *floating gate*, è posizionato all'interno dell'ossido di gate ed è isolato dal resto del dispositivo. Tali gate vengono realizzati in *polisilicio*, vale a dire silicio policristallino fatto crescere sull'ossido, che, opportunamente drogato, ha un comportamento simile ad un conduttore dal punto di vista elettrico, pur rimanendo più semplice da depositare rispetto al metallo.
+
+Se il floating gate viene portato ad un potenziale negativo, è in grado di **spostare verso destra la transcaratteristica** del MOS: gli elettroni immagazzinati in tale gate respingeranno quelli che dovrebbero formare il canale, per cui è necessaria una tensione positiva più elevata per far sì che il canale si formi.
+
+![Variazione del comportamento della tensione](../images/24_LogicaSequenziale/EPROM2.jpeg){width=50%}
+
+Un caricamento del floating gate porta quindi ad un aumento della tensione di soglia $V_T$ del dispositivo.
+
+#### Carica del floating gate
+
+Come possiamo caricare il floating gate? Si impongono tensioni $V_{DS}$ e $V_{GS}$ piuttosto elevata, in particolare $V_{DS} = 18V$ e $V_{GS} = 25V$, che porta la formazione, nel canale, dei cosiddetti *hot electron*, ovvero elettroni con un'energia molto superiore a quella del reticolo cristallino. In virtù di questa energia, essi riescono ad abbandonare il canale e penetrare l'ossido di gate, raggiungendo il floating gate. Se normalmente questa situazione è da evitare nei classici MOS, perchè andremmo a danneggiare l'ossido e modificare la carica in esso intrappolata, facendo quindi variare le caratteristiche del dispositivo, in questo caso ciò viene sfruttato per trarne vantaggio, facendo arrivare questi elettroni al floating gate tramite *effetto tunnel*. Questo effetto è in realtà una proprietà che nasce dalla natura ondulatoria delle particelle, che consente loro di superare, con una probabilità non nulla, una barriera di potenziale, anche se non hanno energia sufficiente per superarla. Tale probabilità dipende dipende dalla differenza tra l'altezza della barriera e l'energia dell'elettrone, e dalla larghezza della barriera. La combinazione tra tensioni usate e proprietà costruttive del dispositivo fanno sì che la probabilità di effetto tunnel sia molto elevata, e quindi che gli elettroni riescano ad arrivare al floating gate.
+
+#### Scarica del floating gate
+
+Quando le tensioni $V_{DS}$ e $V_{GS}$ tornano a valori normali, gli elettroni rimangono intrappolati nel floating gate, aumentando la tensione di soglia del dispositivo. Per permettere a questi elettroni di uscire dal floating gate, è necessario sottoporre il dispositivo ad una radiazione UV, che permette di rimuovere gli elettroni dal floating gate, riportando il dispositivo alle condizioni iniziali. Il procedimento prevede il prelievo della ROM, la sua esposizione alla radiazione UV a lunghezza d'onda pari a 253.7 nm, e la sua rimontaggio. Questa è un'operazione abbastanza complicata che richiede costose operazioni ausiliarie, e che quindi rende le EPROM poco adatte ad essere utilizzate in ambito industriale.
+
+#### Lettura di una EPROM
+
+La word line alla quale è connesso il gate della cella alla quale siamo
+interessati viene pre caricata a una tensione intermedia tra la $V_{T0}$. che si ha a floating gate scarico, e la $V_{T1}$, per floating gate carico: in questo modo, se il floating gate è scarico, il transistore conduce e la corrispondente bit line viene posta a livello logico basso; viceversa, se è carico, il transistore non conduce e la corrispondente bit line rimane al livello logico alto al quale era stata pre caricata.
+
+$$\qquad$$
+$$\qquad$$
+
+### EEPROM
+
+Il grande vantaggio delle EEPROM rispetto alle EPROM è che non richiedono l'utilizzo di radiazioni UV per la cancellazione, ma dei semplici segnali elettrici. 
+
+#### I FLOTOX MOS
+
+Le EEPROM devono la loro esistenza al **FLOTOX MOS**, ovvero il *Floating Gate Thin Oxide MOS*, che è un dispositivo MOS con un floating gate, ma con un ossido di gate molto più sottile rispetto a quello delle EPROM, nell'ordine della decina di $nm$. Il suo simbolo circuitale è il seguente:
+
+![FLOTOX MOS](../images/24_LogicaSequenziale/FLOTOX.jpeg)
+
+Questo permette di ottenere un effetto tunnel molto più marcato, e soprattutto mi permette di utilizzare le tensioni negative per rimuovere gli elettroni dal floating gate, e quindi di cancellare il dispositivo. Questo è possibile perchè, invertendo la carica il floating gate stesso si scarica, e l'ossido sottiile permette il passaggio di essi dal floating gate al canale.
+
+#### Schema di una EEPROM
+
+##### Problemi in scrittura
+
+Lo schema di una EEPROM che utilizza i FLOTOX MOS sarebbe il seguente:
+
+![EEPROM](../images/24_LogicaSequenziale/EEPROM.jpeg){width=50%}
+
+In realtà usando questa configurazione andiamo incontro ad alcuni problemi. Supponiamo di voler programmare la cella $(i,j)$: dobbiamo portare una tensione di $18V$ sulla word line $i$, e una di $0V$ sulla bit line $j$. Per evitare la scrittura indesiderata della cella $(i,j+1)$ dobbiamo porre la bit line $j+1$ a $18V$ e, per evitare che venga scritta anche la cella $(i+1,j)$, dobbiamo porre la word line $i+1$ a $0V$. Avendo quindi la word line $i+1$ e la bit line $j+1$ a $18V$, abbiamo una cancellazione indesiderata della cella $(i+1,j+1)$. Inoltre, avendo $V_{DS} = 18V$ e $V_{GS} = 18V$, abbiamo una dissipazione non indifferente di potenza.
+
+##### Problemi in cancellazione
+
+Un problema uguale ed opposto si verifica in fase di cancellazione della medesima cella. Devo infatti imporre $i$ a $0V$, e $j$ a $18V$. Per non cancellare anche $(i,j+1)$, devo porre $j+1$ a $0V$, e per non cancellare anche $(i+1,j)$, devo porre $i+1$ a $18V$, che implica una scrittura indesiderata di $(i+1,j+1)$.
+
+##### Soluzione
+
+Per risolvere questi problemi, si utilizza una configurazione basata su una cella elementare più complessa, che è la seguente:
+
+![EEPROM2](../images/24_LogicaSequenziale/EEPROM2.jpeg){width=50%}
+
+Viene introdotto un secondo transistore, che svolge la funzione di *enabler* della cella, per il quale risulta necessario raddoppiare sia il numero di word line, per l'aggiunta della linea di *sel*, sia il numero di bit line, per la connessione a *ground*. Sebbene quindi l'architettura sia più complessa, il vantaggio è che la scrittura e la cancellazione di una cella non influisce sulle altre. Facciamo un esempio per avallare la nostra ipotesi: volendo programmare la cella $(i,j)$, pongo $i$ a $18V$, $j$ a $0V$ e $sel$ a $18V$, lasciando $j$ a ground, ad esempio con una tri-state, caricando il floating gate di $(i,j)$. Per evitare la cancellazione su $(i,j+1)$, pongo $sel$ di $i+1$ a $0V$, e per evitare la scrittura su $(i+1,j)$, interdicendo il transistore di enable. Inoltre, mettendo $j+1$ a *gnd* si evita una dissipazione di potenza indesiderata nel transistore in $i,j+1$. Per quanto riguarda la lettura, sempre della stessa cella, pongo $j$ a *gnd*, $sel$ di $i$ solo a $5V$, e $i$ a $2.5V$: questo si fa perché tale valore è intermedio tra i due valori di $V_T$. Su $j$ otterremo il valore contenuto nella cella $(i,j)$. Infine, pongo $j+1$ a *gnd* per evitare la lettura indesiderata di $(i,j+1)$.
+
+#### Flash EEPROM
+
+Nelle EEPROM, la scrittura e la cancellazione avvengono su singole celle, mentre nelle Flash EEPROM avvengono su blocchi di celle: la scrittura e la cancellazione avvengono sempre per effetto tunnel, ottenendo un numero illimitato, in realtà pari a $10^4 \div 10^4$ di cicli di scrittura e cancellazione. La lettura avviene invece su singole celle, come nelle EEPROM. Con l’evoluzione questo numero tende a crescere, ma si scontra col fatto che si aumentano le memorie con la conseguenza della diminuzione dello spazio.
