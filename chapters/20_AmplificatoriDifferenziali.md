@@ -6,7 +6,7 @@ Un amplificatore differenziale è un tipo di amplificatore che, dati due segnali
 
 ## Definizioni
 
-Il segnale a **modo differenziale** $v_d$ è quel segnale dato dalla **differenza** tra i due segnali in ingresso $v_1$ e $v_2$. 
+Il segnale a **modo differenziale** $v_d$ è quel segnale dato dalla **differenza** tra i due segnali in ingresso $v_1$ e $v_2$.
 
 Il segnale a **modo comune** $v_c$ è la **semisomma** dei due segnali in ingresso $v_1$ e $v_2$.
 
@@ -23,7 +23,7 @@ Ciò vuol dire che in una situazione del genere, l'amplificatore differenziale a
 
 ### Caso reale
 
-Introduciamo una nuova grandezza chiamata **CMRR** (Common Mode Rejection Ratio), ovvero il rapporto tra il guadagno del modo differenziale e il guadagno del modo comune, ovvero: $CMRR = \frac{A_d}{A_c}$. Nel caso reale, il **CMRR** è finito e diverso da zero, e deve essere reso **il più grande possibile**. Dei numeri tipici sono $CMRR = 80 \div 120$ $dB$.
+Introduciamo una nuova grandezza chiamata **CMRR** (Common Mode Rejection Ratio), ovvero il rapporto tra il guadagno del modo differenziale e il guadagno del modo comune, ovvero: $CMRR = \frac{A_d}{A_c}$. Nel caso reale, il **CMRR** è finito e diverso da zero, e deve essere reso **il più grande possibile**. Dei numeri tipici sono CMRR $= [80 \div 120]$ $dB$.
 
 ## Utilità per la riduzione del rumore
 
@@ -55,7 +55,7 @@ Cosa vuol dire questo risultato in termini pratici? Se abbiamo dei **disturbi** 
 
 ## Amplificatori operazionali
 
-Si tratta di una tipologia di amplificatori differenziali, devono il loro nome dal aftto che i primi amplificatori di questo tipo venivano utilizzati per fare delle operazioni, quali somma e sottrazione, tra segnali, all'interno di circuiti più complessi.
+Si tratta di una tipologia di amplificatori differenziali, devono il loro nome dal al fatto che i primi amplificatori di questo tipo venivano utilizzati per fare delle operazioni, quali somma e sottrazione, tra segnali, all'interno di circuiti più complessi.
 
 ### Simbolo circuitale
 
@@ -73,7 +73,7 @@ $$\qquad$$
 
 #### I terminali di alimentazione
 
-Sebbene talvolta non vengano disegnati, sono presenti altri due terminali fondamentali per il funzionamento del dispositivo, e sono ovviamente i terminali di alimentazione. Difatti l'amplificatore operazionale è composto da **MOSFET** e **BJT**, che sono elementi attivi, e quindi necessitano di una tensione di alimentazione per funzionare. Essa funziona predendo come terminale di riferimento quello a comune dalle due batterie. La tensione di alimentazione è **duale**, dunque se al terminale non invertente avrò una $V_{CC}$, a quello invertente avrò una $V_{EE}$ tale che esse siano uguali in modulo ma opposte in segno. Il valore della tensione di alimentazione determina infine anche i valori massimi e minimo che il segnale in uscita può assumere: se la tensione di alimentazione vale $V_{CC}$, allora l'uscita $v_o$ sarà tale che $-V_{EE} \le v_o \le V_{CC}$.
+Sebbene talvolta non vengano disegnati, sono presenti altri due terminali fondamentali per il funzionamento del dispositivo, e sono ovviamente i terminali di alimentazione. Difatti l'amplificatore operazionale è composto da **MOSFET** e **BJT**, che sono elementi attivi, e quindi necessitano di una tensione di alimentazione per funzionare. Essa funziona prendendo come terminale di riferimento quello a comune dalle due batterie. La tensione di alimentazione è **duale**, dunque se al terminale non invertente avrò una $V_{CC}$, a quello invertente avrò una $V_{EE}$ tale che esse siano uguali in modulo ma opposte in segno. Il valore della tensione di alimentazione determina infine anche i valori massimi e minimo che il segnale in uscita può assumere: se la tensione di alimentazione vale $V_{CC}$, allora l'uscita $v_o$ sarà tale che $-V_{EE} \le v_o \le V_{CC}$.
 
 ![Alimentazione](../images/20_AmplificatoriDifferenziali/ope2.jpeg){ width=70% }
 
@@ -83,7 +83,7 @@ Tra i due terminali di ingresso è presente una resistenza $R_{IN}$, mentre il c
 
 ![Circuito equivalente](../images/20_AmplificatoriDifferenziali/ope3.jpeg){ width=70% }
 
-É opportuno ricordare che i **terminali di ingresso non sono connesi a ground**, e dunque non hanno *ground* come tensione di riferimento.
+É opportuno ricordare che i **terminali di ingresso non sono connessi a ground**, e dunque non hanno *ground* come tensione di riferimento.
 
 $$\qquad$$
 
@@ -100,7 +100,7 @@ Nella seguente tabella sono riportate le differenze tra il caso ideale e quello 
 | $CMRR = \infty$ | $CMRR = 90dB$ |
 | $PGB =  \infty$ | $PGB = 1MHz$ |
 
-La **banda** è l'unico parametro che si discosta molto tra caso reale e ideale, ed è piccola per motivi di stabilità; il suo valore ci indica che il dispositivo amplificherà tutti i segnali tra 4-8 Hz, mentre per frequenze più alte la sue risposta sarà più debole. Ciò non rappresenta un grande problema, perchè il parametro di interesse è il **Prodotto Guadagno Banda**, o PGB: esso indica il massimo guadagno ottenibile dall'amplificatore ad una certa frequenza. Nel caso ideale, il PGB è infinito, mentre nel caso reale è di 1 MHz, che è un valore molto elevato.
+La **banda** è l'unico parametro che si discosta molto tra caso reale e ideale, ed è piccola per motivi di stabilità; il suo valore ci indica che il dispositivo amplificherà tutti i segnali tra 4-8 Hz, mentre per frequenze più alte la sue risposta sarà più debole. Ciò non rappresenta un grande problema, perché il parametro di interesse è il **Prodotto Guadagno Banda**, o PGB: esso indica il massimo guadagno ottenibile dall'amplificatore ad una certa frequenza. Nel caso ideale, il PGB è infinito, mentre nel caso reale è di 1 MHz, che è un valore molto elevato.
 
 ### Caratteristica di trasferimento
 
@@ -110,7 +110,7 @@ Vediamo subito come in questo caso il dispositivo si satura subito, per tensioni
 
 ### Richiamo alla teoria dei sistemi
 
-L'immediata saturazione del dispositivo rilevata nell'analisi della caratteristica ci suggerisce che un amplificatore operazionale verrà difficilemnte usato in loop aperto, vista appunto la saturazione causata dall'elevato guadagno. Verrà invece usato in **loop chiuso** in un sistema di reazione, facendo in modo di mantenere sempre piccola la differenza di potenziale tra i due terminali in ingresso, e dunque mantenere il funzionamento del dispositivo stesso in **zona lineare**.
+L'immediata saturazione del dispositivo rilevata nell'analisi della caratteristica ci suggerisce che un amplificatore operazionale verrà difficilmente usato in loop aperto, vista appunto la saturazione causata dall'elevato guadagno. Verrà invece usato in **loop chiuso** in un sistema di reazione, facendo in modo di mantenere sempre piccola la differenza di potenziale tra i due terminali in ingresso, e dunque mantenere il funzionamento del dispositivo stesso in **zona lineare**.
 
 ![Loop chiuso](../images/20_AmplificatoriDifferenziali/ope5.jpeg){width=50%}
 
@@ -150,9 +150,9 @@ Pongo dunque $\xi = \frac{1}{\beta A}$, e faccio lo sviluppo di Taylor, arrestan
 
 $$w = x - \beta (\frac{1}{\beta} (1 - \frac{1}{\beta A}))x = \frac{x}{\beta A}$$
 
-In realtà quindi $w$ è un segnale **molto piccolo**, trascurabile rispetto ad altre grandezze, ma che non corrisponde esattamente ad una tensione. 
+In realtà quindi $w$ è un segnale **molto piccolo**, trascurabile rispetto ad altre grandezze, ma che non corrisponde esattamente ad una tensione.
 
-#### Il cortociucuito virtuale
+#### Il cortocircuito virtuale
 
 Dal punto di vista elettronico avremo che:
 
@@ -212,7 +212,7 @@ Sono presenti due generatori di segnali $V_1$ e $V_2$, collegati al terminale ne
 
 $$v_o = -R_G(i_1 + i_2) = -R_G(\frac{v_1}{R_1} + \frac{v_2}{R_2}) = - (a_1v_1 + a_2v_2)$$
 
-dove i parametri $a_1$ e $a_2$ sono definiti come $a_1 = \frac{R_G}{R_1}$ e $a_2 = \frac{R_G}{R_2}$. Di fatto l'uscita è un'amplificazione della somma dei due segnali in ingresso, con un fattore di amplificazione negativo, essendo questa una configurazione invertitente.
+dove i parametri $a_1$ e $a_2$ sono definiti come $a_1 = \frac{R_G}{R_1}$ e $a_2 = \frac{R_G}{R_2}$. Di fatto l'uscita è un'amplificazione della somma dei due segnali in ingresso, con un fattore di amplificazione negativo, essendo questa una configurazione invertente.
 
 ## Circuito sottrattore
 
@@ -255,7 +255,7 @@ Come sappiamo, in Laplace $\frac{1}{s}$ equivale all'operazione di integrale, pe
 
 $$v_o(t) = - \frac{1}{RC} \int_o^t v_i(\tau) d\tau + v_o(0)$$
 
-Con ciò abbiamo dimostrato che la tensione in uscita è uguale all'integrale negativo della tensione di ingresso. Dobbiamo però fare la stessa analisi anche nel dominio del tempo, in modo da dimostrare la correttezza del circuito anche per tutti i segnali che non ammettono la trasformata di Laplace. Partiamo dal segeunte sistema di equazioni:
+Con ciò abbiamo dimostrato che la tensione in uscita è uguale all'integrale negativo della tensione di ingresso. Dobbiamo però fare la stessa analisi anche nel dominio del tempo, in modo da dimostrare la correttezza del circuito anche per tutti i segnali che non ammettono la trasformata di Laplace. Partiamo dal seguente sistema di equazioni:
 
 $$
 \begin{cases}

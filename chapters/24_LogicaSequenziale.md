@@ -4,7 +4,7 @@ Un circuito sequenziale è quel circuito la cui uscita **non dipende solamente d
 
 ## Elementi di memoria statica
 
-La memoria statica viene inmplementata tramite i **circuiti bistabili**. Questi circuiti sono caratterizzati da due stati stabili, detti *stati di memoria*, che vengono mantenuti finché non viene applicato un segnale di *reset* o di *set*. Questi segnali permettono di passare da uno stato all'altro. I circuiti bistabili sono implementati tramite **latch** e **flip-flop**. Ogni circuito bistabile è quindi in grado di memorizzare **un bit** di informazione.
+La memoria statica viene implementata tramite i **circuiti bistabili**. Questi circuiti sono caratterizzati da due stati stabili, detti *stati di memoria*, che vengono mantenuti finché non viene applicato un segnale di *reset* o di *set*. Questi segnali permettono di passare da uno stato all'altro. I circuiti bistabili sono implementati tramite **latch** e **flip-flop**. Ogni circuito bistabile è quindi in grado di memorizzare **un bit** di informazione.
 
 ### Latch
 
@@ -28,7 +28,7 @@ $$\qquad$$
 
 ### Flip flop S-R
 
-Esistono diversi tipi di Flip-Flop, ma noi vedremo la tipologia **S-R**, ovvero Set-Reset. Una sua realizzazione a porte NOR, con la tabella di verità della porta NOR, è la segeunte:
+Esistono diversi tipi di Flip-Flop, ma noi vedremo la tipologia **S-R**, ovvero Set-Reset. Una sua realizzazione a porte NOR, con la tabella di verità della porta NOR, è la seguente:
 
 ![Flip Flop S-R](../images/24_LogicaSequenziale/flipflop1.jpeg)
 
@@ -47,18 +47,17 @@ Il primo stato, ovvero $S=0$ e $R=0$, è quello di memorizzazione, mentre gli al
 
 $$\qquad$$
 
-
 #### Realizzazione fisica del circuito
 
 Una possibile implementazione è quella vista in precedenza, con le porte NOR, ma è possibile anche utilizzare un'ulteriore versione che utilizza meno transistori:
 
 ![Memoria dinamica](../images/24_LogicaSequenziale/flipflop2.jpeg)
 
-Il cuore del circuito è rappresentato dai due inverter, composti dai MOS $Q_1$, $Q_2$, $Q_3$ e $Q_4$. Abbiamo poi collegati i MOS $Q_6$ e $Q_8$, che svolgono la funzione di **enable**, indicata con $\not0$, ed ad essi collegati in serie rispettivamente $Q_5$ e $Q_7$, che svolgono la funzione di **set** e **reset**. Il circuito è in grado di memorizzare un bit di informazione, e di modificarlo tramite i segnali di set e reset.
+Il cuore del circuito è rappresentato dai due inverter, composti dai MOS $Q_1$, $Q_2$, $Q_3$ e $Q_4$. Abbiamo poi collegati i MOS $Q_6$ e $Q_8$, che svolgono la funzione di **enable**, indicata con $\phi$, ed ad essi collegati in serie rispettivamente $Q_5$ e $Q_7$, che svolgono la funzione di **set** e **reset**. Il circuito è in grado di memorizzare un bit di informazione, e di modificarlo tramite i segnali di set e reset.
 
 #### Fasi di funzionamento
 
-La prima fase è quella di memorizzazione, in cui gli enabler sono spenti: qui i valori di S ed R sono ininfluenti, perchè essendo collegati al latch tramite gli enabler, che sono OFF, non possono influenzare il circuito.
+La prima fase è quella di memorizzazione, in cui gli enabler sono spenti: qui i valori di S ed R sono ininfluenti, perché essendo collegati al latch tramite gli enabler, che sono OFF, non possono influenzare il circuito.
 La seconda fase è ovviamente quella in cui tutti gli enabler sono ON, per cui S ed R hanno un impatto sul funzionamento del circuito. Scriviamo due sistemi che riassumono il funzionamento del circuito:
 
 $$
@@ -79,10 +78,10 @@ $$
 
 #### Ipotesi di funzionamento
 
-Per garantire il correttamento funzionamento del circuito sono necessarie due ipotesi:
+Per garantire il corretto funzionamento del circuito sono necessarie due ipotesi:
 
-* S ed R devono **essere attivi** per un tempo sufficientemente lungo da permettere la commutazione del latch. Nello specifico, è sufficiente che si raggiunga $\frac{V_{DD}}{2}$ poichè la reazione positiva del latch spingerà lo stesso a collassare in uno stato stabile;
-* $\frac{W}{L}$ dei MOS $Q_5$, $Q_6$, $Q_7$ e $Q_8$ deve essere **adeguato**. Ad esempio, attivando $Q_2$, avrei $Q_2$, $Q_5$ e $Q_6$ in serie, per cui scorrerà in essi la stessa corrente. Devo quindi trovare un fattore $frac{W}{L}$ tale che la tensione sia pari a $\frac{V_{DD}}{2}$.
+* S ed R devono **essere attivi** per un tempo sufficientemente lungo da permettere la commutazione del latch. Nello specifico, è sufficiente che si raggiunga $\frac{V_{DD}}{2}$ poiché la reazione positiva del latch spingerà lo stesso a collassare in uno stato stabile;
+* $\frac{W}{L}$ dei MOS $Q_5$, $Q_6$, $Q_7$ e $Q_8$ deve essere **adeguato**. Ad esempio, attivando $Q_2$, avrei $Q_2$, $Q_5$ e $Q_6$ in serie, per cui scorrerà in essi la stessa corrente. Devo quindi trovare un fattore $\frac{W}{L}$ tale che la tensione sia pari a $\frac{V_{DD}}{2}$.
 
 #### Flip Flop semplificato
 
@@ -111,13 +110,13 @@ Ciò che comanda le varie fasi di funzionamento del circuito è il segnale $\phi
 * $\phi = 1 \to \overline{\phi} = 0$: interrompiamo l'anello di reazione del circuito. Il dato entra nel circuito, lo attraversa e ne esce inalterato;
 * $\phi = 0 \to \overline{\phi} = 1$: si va a formare un latch che mantiene il dato in uscita.
 
-La capacità di ingresso degli inverter è ciò che rende possibile mantenere il dato in uscita quando si verifica la sovrappositizione di valori tra $\phi$ e $\overline{\phi}$: da ciò deriva il bisogno di avere un $\Delta t$ sufficientemente piccolo.
+La capacità di ingresso degli inverter è ciò che rende possibile mantenere il dato in uscita quando si verifica la sovrapposizione di valori tra $\phi$ e $\overline{\phi}$: da ciò deriva il bisogno di avere un $\Delta t$ sufficientemente piccolo.
 
 $$\qquad$$
 
 ### Flip Flop D edge-triggered
 
-Questo flip-flop memorizzail valore in ingresso **solo durante una specifica transizione del clock**. Può essere realizzato tramite una struttura *master-slave*, usando due FF-D in cascata, come mostrato in figura:
+Questo flip-flop memorizza il valore in ingresso **solo durante una specifica transizione del clock**. Può essere realizzato tramite una struttura *master-slave*, usando due FF-D in cascata, come mostrato in figura:
 
 ![Schema master-slave](../images/24_LogicaSequenziale/flipflopedge1.jpeg)
 
@@ -126,11 +125,11 @@ I segnali $\phi_1$ e $\phi_2$ sono due fasi del clock **non sovrapposte**, per l
 * $\phi_1$ scende e $\phi_2$ sale: il master memorizza il valore di D subito prima della transizione, e lo slave, che è in trasparenza, lo lo riporta in uscita;
 * $\phi_1$ sale e $\phi_2$ scende: il master è in trasparenza e torna a seguire l'ingresso, mentre lo slave memorizza il dato che aveva in uscita prima della transizione.
 
-In pratica viene *fotografato* l'ingresso al frontw di discesa di $\phi_1$, che viene mandato in uscita durante il fronte di salita di $\phi_2$, e mantenuto fino al clock successivo.
+In pratica viene *fotografato* l'ingresso al fronte di discesa di $\phi_1$, che viene mandato in uscita durante il fronte di salita di $\phi_2$, e mantenuto fino al clock successivo.
 
 ## La memoria RAM
 
-Le **R**andom **A**ccess **M**memory sono memorie con consentono **non sequenziale** ai dati, per cui il tempo di accesso è indipendente dalla posizione del dato; sono realizzate tramite **matrici di celle di memoria**.
+Le **R**andom **A**ccess **M**emory sono memorie con consentono **non sequenziale** ai dati, per cui il tempo di accesso è indipendente dalla posizione del dato; sono realizzate tramite **matrici di celle di memoria**.
 
 Le due famiglie principali sono le RAM **non volatili** e **volatili**: le prime conservano i dati anche in assenza di alimentazione, mentre le seconde li perdono. Tra le non volatili abbiamo poi le **ROM**, ovvero le **R**ead **O**nly **M**emory, che contengono dati non modificabili scritti dal produttore in fabbrica, e le **PROM**, ovvero le **P**rogrammable **R**ead **O**nly **M**emory, che possono essere programmate dall'utente. Per quanto riguarda le memorie volatili, esse si dividono in ulteriori due categorie: le **SRAM**, ovvero le **S**tatic **R**andom **A**ccess **M**emory, e le **DRAM**, ovvero le **D**ynamic **R**andom **A**ccess **M**emory. le prime necessitano di una semplice alimentazione costante, mentre le seconde hanno bisogno di un **refresh** periodico per mantenere i dati.
 
@@ -230,13 +229,13 @@ Si noti come non sia presente la bit line complementare, assenza atta a minimizz
 
 #### Scrittura in DRAM
 
-Il condensatore può essere caricato fino alla tensione $V_{DD} - V_T$ e scaricato completamente dal NMOS: supponendo di voler scrivere $1$, poniamo la bit line a $V_{DD}$ e la word line a $1$. Carico $C_S$ fino a $V_{DD} - V_T$, limite già visto nella logica pass-transistor negli NMOS. La scelta è fatta in termini di risparmio: è più accettato avere un valore logico *non pieno* piuttosto che inserire un PMOS che lo garantirebbe. La scrittura avviene per semplice carica del condensatore, per cui bisogna tenere la word line attiva per un tempo sufficiente affinché il condensatore si carichi.
+Il condensatore può essere caricato fino alla tensione $V_{DD} - V_T$ e scaricato completamente dal NMOS: supponendo di voler scrivere $1$, poniamo la bit line a $V_{DD}$ e la word line a $1$. Carico $C_S$ fino a $V_{DD} - V_T$, limite già visto nella logica pass-transistor negli NMOS. La scelta è fatta in termini di risparmio: è più accettato avere un valore logico *non pieno*, piuttosto che inserire un PMOS che lo garantirebbe. La scrittura avviene per semplice carica del condensatore, per cui bisogna tenere la word line attiva per un tempo sufficiente affinché il condensatore si carichi.
 Nel caso di scrittura di $0$ il concetto è simile: si porta la bit line ad una tensione nulla, e si attiva la word line: anche qui è necessario attendere un tempo sufficiente affinché il condensatore si scarichi completamente.
 
 #### Lettura in DRAM
 
-La lettura è concettualmente simile a quella della SRAM, con la differenza che in questo contesto la lettura è **distruttiva**, per cui è necessario riscrivere il dato letto. Il primo passo è sempre quello di pre caricare la bit line a $\frac{V_{DD}}{2}$, per poi attivare la word line. Il condensatore $C_S$ viene messo a contatto con il condensatore della bit line: avverrà un trasferimento di carica tra questi condensatore, che spiega il fatto che la lettura sia distruttiva. Si noti la differenza tra le due capacità: la $C_B$ è molto più grande, nell'ordine dei $pF$, rispetto a $C_S$, che è pari a qualche decina di $fF$. È quindi necessario riscriere il dato letto, per evitare che tale dato venga perso. 
-Il valore letto viene discriminato dallo spostmento della tensione sulla bit line, dovuto dalla lettura di un valore logico nella cella. Dato che la carica totale prima e dopo il trasferimento deve essere la stessa, si ha che:
+La lettura è concettualmente simile a quella della SRAM, con la differenza che in questo contesto la lettura è **distruttiva**, per cui è necessario riscrivere il dato letto. Il primo passo è sempre quello di pre caricare la bit line a $\frac{V_{DD}}{2}$, per poi attivare la word line. Il condensatore $C_S$ viene messo a contatto con il condensatore della bit line: avverrà un trasferimento di carica tra questi condensatore, che spiega il fatto che la lettura sia distruttiva. Si noti la differenza tra le due capacità: la $C_B$ è molto più grande, nell'ordine dei $pF$, rispetto a $C_S$, che è pari a qualche decina di $fF$. È quindi necessario riscrivere il dato letto, per evitare che tale dato venga perso.
+Il valore letto viene discriminato dallo spostamento della tensione sulla bit line, dovuto dalla lettura di un valore logico nella cella. Dato che la carica totale prima e dopo il trasferimento deve essere la stessa, si ha che:
 
 $$
 C_SV_{CS} + C_b \frac{V_{DD}}{2} = (C_S + C_B) (\frac{V_{DD}}{2} + \Delta V)
@@ -263,7 +262,7 @@ Essa viene effettuata ponendo la bit line a $V_{DD}$, nel caso in cui sia stato 
 
 #### Sense amplifier e pre carica per DRAM
 
-I circuiti di pre carica e di sense amplifier sono del tutto analoghi a quelli visti per la SRAM, con la differenza dell'assenza della bit line complementare: per ovviare a questo fatto, si divide ciascuna bit line in due parti, e si pone il sense amplifier al centro, con gli ingressi connessi a ciascuna delle estremità *esterne* della bit line. Viene inoltre inserita una *dummy cell* a ciascuna di queste estremità esterne, come visibile in figura:
+I circuiti di pre carica e di sense amplifier sono del tutto analoghi a quelli visti per la SRAM, con la differenza dell'assenza della bit line complementare: per ovviare a questo fatto, si divide la bit line in due parti, e si pone il sense amplifier al centro, con gli ingressi connessi a ciascuna delle estremità *esterne* della bit line. Viene inoltre inserita una *dummy cell* a ciascuna di queste estremità esterne, come visibile in figura:
 
 ![Sense amplifier per DRAM](../images/24_LogicaSequenziale/dummy.jpeg)
 
@@ -303,7 +302,7 @@ Le memorie ROM sono memorie di sola lettura, ovvero memorie in cui è possibile 
 
 ### Memorie ROM con diodi
 
-Concettualemnte, è una memoria ancora più semplice della RAM, in quanto consistente di una matrice di bit line e word line, tra le quali viene **inserito un diodo nel caso si voglia scrivere un valore logico 1**: in assenza del diodo, il valore logico è $0$. Il circuito è mostrato in figura:
+Concettualmente, è una memoria ancora più semplice della RAM, in quanto consistente di una matrice di bit line e word line, tra le quali viene **inserito un diodo nel caso si voglia scrivere un valore logico 1**: in assenza del diodo, il valore logico è $0$. Il circuito è mostrato in figura:
 
 ![Memoria ROM a diodi](../images/24_LogicaSequenziale/ROM1.jpeg){width=50%}
 
@@ -314,17 +313,17 @@ La scelta dei diodi è dovuta al fatto che sono elementi unidirezionali: se ad e
 
 La modalità a diodi non è l'unico modo per costruire una ROM: infatti, per le implementazioni di una ROM in circuiti integrati, sono preferiti i i MOS.
 
-I transistori PMOS hanno la funzione di **pull-up** per la bit line, che viene invece portata al livello logico basso se nell'intersectione tra word line e bit line è presente un transistor NMOS. Il dispositivo NMOS viene realizzato con un rapporto $\frac{W}{L}$ molto maggiore rispetto a quello del PMOS, in modo da forzare la funzione di pull-down e farla prevalere su quella di pull-up. Il circuito è mostrato in figura:
+I transistori PMOS hanno la funzione di **pull-up** per la bit line, che viene invece portata al livello logico basso se nell'intersezione tra word line e bit line è presente un transistor NMOS. Il dispositivo NMOS viene realizzato con un rapporto $\frac{W}{L}$ molto maggiore rispetto a quello del PMOS, in modo da forzare la funzione di pull-down e farla prevalere su quella di pull-up. Il circuito è mostrato in figura:
 
 ![Memoria ROM con MOS](../images/24_LogicaSequenziale/ROM2.jpeg){width=50%}
 
 #### Modalità a pre carica
 
-Un'altra modalità di funzionamento che sfrutta sempre i MOS, e che presenta una minore dissipazione oltre che una minore complessità, consiste nel pre caricare la bit line a $\frac{V{DD}}{2}$ tramite il PMOS. Lui stesso verrà poi interdetto prima che venga attivata la word line di interesse: in questo modo, se è presente un NMOS nell'incrocio tra word line e bit line, la bit line verrà scaricata a massa, avendo come risultato di uscita uno $0$ logico. Se invece non è presente un NMOS, la bit line rimarrà a $\frac{V{DD}}{2}$, avendo come risultato di uscita uno $1$ logico. 
+Un'altra modalità di funzionamento che sfrutta sempre i MOS, e che presenta una minore dissipazione oltre che una minore complessità, consiste nel pre caricare la bit line a $\frac{V{DD}}{2}$ tramite il PMOS. Lui stesso verrà poi interdetto prima che venga attivata la word line di interesse: in questo modo, se è presente un NMOS nell'incrocio tra word line e bit line, la bit line verrà scaricata a massa, avendo come risultato di uscita uno $0$ logico. Se invece non è presente un NMOS, la bit line rimarrà a $\frac{V{DD}}{2}$, avendo come risultato di uscita uno $1$ logico.
 
-#### Fabbriacazione di una ROM
+#### Fabbricazione di una ROM
 
-La fabbricazione, e quindi anche la programmazione, non può avvenire posizionando ogni singolo NMOS in ogni singolo incrocio desiderato. Il processo consiste quindi nel posizionare **ad ogni incrocio** un MOS, salvo poi utilizzare una maschera che farà in modo di collegare alla bit line e alla word line **solo gli incroci desiderati**. Tramite questa strategia è possibile abbattere i costi di produzione di questi dispositivi, perchè la fase di 'personalizzazione' della memoria è effettivamente l'ultima da effettuare, e quindi è possibile produrre un unico tipo di memoria, che poi verrà programmata in base alle esigenze.
+La fabbricazione, e quindi anche la programmazione, non può avvenire posizionando ogni singolo NMOS in ogni singolo incrocio desiderato. Il processo consiste quindi nel posizionare **ad ogni incrocio** un MOS, salvo poi utilizzare una maschera che farà in modo di collegare alla bit line e alla word line **solo gli incroci desiderati**. Tramite questa strategia è possibile abbattere i costi di produzione di questi dispositivi, perché la fase di 'personalizzazione' della memoria è effettivamente l'ultima da effettuare, e quindi è possibile produrre un unico tipo di memoria, che poi verrà programmata in base alle esigenze.
 
 ## ROM programmabili
 
@@ -346,7 +345,7 @@ Le EPROM hanno struttura equivalente a quella di una ROM a MOS, ma ne utilizza a
 
 Il gate superiori è collegato al terminale esterno di gate, e svolge la normale funzione di gate. Il secondo gate, chiamato *floating gate*, è posizionato all'interno dell'ossido di gate ed è isolato dal resto del dispositivo. Tali gate vengono realizzati in *polisilicio*, vale a dire silicio policristallino fatto crescere sull'ossido, che, opportunamente drogato, ha un comportamento simile ad un conduttore dal punto di vista elettrico, pur rimanendo più semplice da depositare rispetto al metallo.
 
-Se il floating gate viene portato ad un potenziale negativo, è in grado di **spostare verso destra la transcaratteristica** del MOS: gli elettroni immagazzinati in tale gate respingeranno quelli che dovrebbero formare il canale, per cui è necessaria una tensione positiva più elevata per far sì che il canale si formi.
+Se il floating gate viene portato ad un potenziale negativo, è in grado di **spostare verso destra la trans-caratteristica** del MOS: gli elettroni immagazzinati in tale gate respingeranno quelli che dovrebbero formare il canale, per cui è necessaria una tensione positiva più elevata per far sì che il canale si formi.
 
 ![Variazione del comportamento della tensione](../images/24_LogicaSequenziale/EPROM2.jpeg){width=50%}
 
@@ -354,7 +353,7 @@ Un caricamento del floating gate porta quindi ad un aumento della tensione di so
 
 #### Carica del floating gate
 
-Come possiamo caricare il floating gate? Si impongono tensioni $V_{DS}$ e $V_{GS}$ piuttosto elevata, in particolare $V_{DS} = 18V$ e $V_{GS} = 25V$, che porta la formazione, nel canale, dei cosiddetti *hot electron*, ovvero elettroni con un'energia molto superiore a quella del reticolo cristallino. In virtù di questa energia, essi riescono ad abbandonare il canale e penetrare l'ossido di gate, raggiungendo il floating gate. Se normalmente questa situazione è da evitare nei classici MOS, perchè andremmo a danneggiare l'ossido e modificare la carica in esso intrappolata, facendo quindi variare le caratteristiche del dispositivo, in questo caso ciò viene sfruttato per trarne vantaggio, facendo arrivare questi elettroni al floating gate tramite *effetto tunnel*. Questo effetto è in realtà una proprietà che nasce dalla natura ondulatoria delle particelle, che consente loro di superare, con una probabilità non nulla, una barriera di potenziale, anche se non hanno energia sufficiente per superarla. Tale probabilità dipende dipende dalla differenza tra l'altezza della barriera e l'energia dell'elettrone, e dalla larghezza della barriera. La combinazione tra tensioni usate e proprietà costruttive del dispositivo fanno sì che la probabilità di effetto tunnel sia molto elevata, e quindi che gli elettroni riescano ad arrivare al floating gate.
+Come possiamo caricare il floating gate? Si impongono tensioni $V_{DS}$ e $V_{GS}$ piuttosto elevata, in particolare $V_{DS} = 18V$ e $V_{GS} = 25V$, che porta la formazione, nel canale, dei cosiddetti *hot electron*, ovvero elettroni con un'energia molto superiore a quella del reticolo cristallino. In virtù di questa energia, essi riescono ad abbandonare il canale e penetrare l'ossido di gate, raggiungendo il floating gate. Se normalmente questa situazione è da evitare nei classici MOS, perché andremmo a danneggiare l'ossido e modificare la carica in esso intrappolata, facendo quindi variare le caratteristiche del dispositivo, in questo caso ciò viene sfruttato per trarne vantaggio, facendo arrivare questi elettroni al floating gate tramite *effetto tunnel*. Questo effetto è in realtà una proprietà che nasce dalla natura ondulatoria delle particelle, che consente loro di superare, con una probabilità non nulla, una barriera di potenziale, anche se non hanno energia sufficiente per superarla. Tale probabilità dipende dipende dalla differenza tra l'altezza della barriera e l'energia dell'elettrone, e dalla larghezza della barriera. La combinazione tra tensioni usate e proprietà costruttive del dispositivo fanno sì che la probabilità di effetto tunnel sia molto elevata, e quindi che gli elettroni riescano ad arrivare al floating gate.
 
 #### Scarica del floating gate
 
@@ -370,7 +369,7 @@ $$\qquad$$
 
 ### EEPROM
 
-Il grande vantaggio delle EEPROM rispetto alle EPROM è che non richiedono l'utilizzo di radiazioni UV per la cancellazione, ma dei semplici segnali elettrici. 
+Il grande vantaggio delle EEPROM rispetto alle EPROM è che non richiedono l'utilizzo di radiazioni UV per la cancellazione, ma dei semplici segnali elettrici.
 
 #### I FLOTOX MOS
 
@@ -378,7 +377,7 @@ Le EEPROM devono la loro esistenza al **FLOTOX MOS**, ovvero il *Floating Gate T
 
 ![FLOTOX MOS](../images/24_LogicaSequenziale/FLOTOX.jpeg)
 
-Questo permette di ottenere un effetto tunnel molto più marcato, e soprattutto mi permette di utilizzare le tensioni negative per rimuovere gli elettroni dal floating gate, e quindi di cancellare il dispositivo. Questo è possibile perchè, invertendo la carica il floating gate stesso si scarica, e l'ossido sottiile permette il passaggio di essi dal floating gate al canale.
+Questo permette di ottenere un effetto tunnel molto più marcato, e soprattutto mi permette di utilizzare le tensioni negative per rimuovere gli elettroni dal floating gate, e quindi di cancellare il dispositivo. Questo è possibile perché, invertendo la carica il floating gate stesso si scarica, e l'ossido sottile permette il passaggio di essi dal floating gate al canale.
 
 #### Schema di una EEPROM
 
@@ -408,4 +407,4 @@ Nelle EEPROM, la scrittura e la cancellazione avvengono su singole celle, mentre
 
 ## Convertitori A/D e D/A
 
-Si faccia riferimento alle [dispense di Piotto](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/II%20SEMESTRE/Elettronica%20digitale/Dispense%20e%20manuali/note_convertitori_piotto.pdf) 
+Si faccia riferimento alle [dispense di Piotto](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/II%20SEMESTRE/Elettronica%20digitale/Dispense%20e%20manuali/note_convertitori_piotto.pdf)

@@ -16,7 +16,7 @@ Dovremo riprendere tutte le ipotesi fatte durante l'analisi del MOSFET, ma è im
 
 ### Verifica delle ipotesi
 
-Questa tabella riassume e le relative verifiche per le varie zone di funzionamento nei vari tipi di MOSFET:
+Questa tabella riassume le ipotesi, e le relative verifiche, per le varie zone di funzionamento nei vari tipi di MOSFET:
 
 ![Schema riassuntivo sulla verifica delle ipotesi](../images/16_PolarizzazioneMOS/Hp.png){width=70%}
 
@@ -28,7 +28,7 @@ Il nome deriva dal fatto che il valore di $V_{GS}$ è appunto fisso, e ciò deri
 
 ![Schema di polarizzazione a $V_{GS}$ fissa](../images/16_PolarizzazioneMOS/VCostante.png){width=70%}
 
-Questo circuito può essere utilizzato, anche se presenta un problema. Assumiamo di aver polarizzato correttamente in zona di saturazione il nostro MOSFET e di aver posizionato il punto di lavoro al centro delle caratteristiche, come abbiamo fatto per il BJT, consideriamo la transcaratteristica che rappresenta la corrente di Drain in funzione di $V_{GS}$, come mostrato nel grafico. Tuttavia, può accadere che due dispositivi MOSFET nominalmente uguali con la stessa sigla abbiano caratteristiche diverse l'uno dall'altro. Poiché siamo in polarizzazione a $V_{GS}$ fissa ciò implica che, come evidenziato nel grafico, possiamo ottenere due correnti di Drain molto diverse tra loro. Quindi, questo tipo di polarizzazione a $V_{GS}$ fissa può essere utilizzato, ma comporta un punto di lavoro dipendente dal transistore utilizzato: per renderlo indipendente, è possibile inserire una quarta resistenza tra Source e Drain.
+Questo circuito può essere utilizzato, anche se presenta un problema. Assumiamo di aver polarizzato correttamente in zona di saturazione il nostro MOSFET e di aver posizionato il punto di lavoro al centro delle caratteristiche, come abbiamo fatto per il BJT, e consideriamo la trans-caratteristica che rappresenta la corrente di Drain in funzione di $V_{GS}$, come mostrato nel grafico: può accadere che due dispositivi MOSFET nominalmente uguali e con la stessa sigla, abbiano caratteristiche diverse l'uno dall'altro. Poiché siamo in polarizzazione a $V_{GS}$ fissa ciò implica che, come evidenziato nel grafico, possiamo ottenere due correnti di Drain molto diverse tra loro. Quindi, questo tipo di polarizzazione a $V_{GS}$ fissa può essere utilizzato, ma comporta un punto di lavoro dipendente dal transistore utilizzato: per renderlo indipendente, è possibile inserire una quarta resistenza tra Source e Drain.
 
 ### Circuito a 4 resistenze
 
@@ -36,15 +36,18 @@ Facciamo l'ipotesi di essere in saturazione, e di avere $I_G = 0$. Quest'ultima 
 
 ![Schema di polarizzazione a 4 resistenze](../images/16_PolarizzazioneMOS/4res.png){width=70%}
 
-Prendiamo ora la transcaratteristica:
+Prendiamo ora la trans-caratteristica:
 
-![Transcaratteristica di polarizzazione a 4 resistenze](../images/16_PolarizzazioneMOS/tr4res.png){width=70%}
+![Trans-caratteristica di polarizzazione a 4 resistenze](../images/16_PolarizzazioneMOS/tr4res.png){width=70%}
 
-Vediamo che se $I_D$ aumenta, aumenterà anche $V_S$. Essa porterà ad una diminuzione di $V_{GS}$ ed infine, ad una diminuzione di $I_D$. L'aggiunta della resistenza introduce una retroazione negativa che porta alla **stabilizzazione del circuito** tramite la stabilizzazione della corrente di polarizzazione. Questo perchè la retta di carico, non essendo più verticale,avvicina i punti di lavoro in caso di utilizzo di dispositivi differenti, infatti le correnti $I_{D1}$ e $I_{D2}$ saranno si diverse, ma non eccessivamente.
+Vediamo che se $I_D$ aumenta, aumenterà anche $V_S$. Essa porterà ad una diminuzione di $V_{GS}$ ed infine, ad una diminuzione di $I_D$. L'aggiunta della resistenza introduce una retroazione negativa che porta alla **stabilizzazione del circuito**, tramite la stabilizzazione della corrente di polarizzazione. Questo perché la retta di carico, non essendo più verticale,avvicina i punti di lavoro in caso di utilizzo di dispositivi differenti, infatti le correnti $I_{D1}$ e $I_{D2}$ saranno sì diverse, ma non eccessivamente.
 
 Risolvendo il circuito, otteniamo $V_{GS} = V_G - R_SI_D$. Se $Q$ è saturo, allora:
 
-$$I_D = K(V_{GS} - V_T)^2 = K(V_G -R_SI_D-V_T)^2$$
-
-$$\frac{V_G - V_{GS}}{R_S} = K(V_{GS}-V_T)^2$$
-Essendo un'equazione di secondo grado, avrà due soluzioni di cui **solo una accettabile**.
+$$
+\begin{cases}
+I_D = K(V_{GS} - V_T)^2 = K(V_G -R_SI_D-V_T)^2\\
+\frac{V_G - V_{GS}}{R_S} = K(V_{GS}-V_T)^2
+\end{cases}
+$$
+Essendo un'equazione di secondo grado, avrà due soluzioni di cui **solo una accettabile**, visto che l'altra non soddisferà le condizioni di conduzione o di saturazione.

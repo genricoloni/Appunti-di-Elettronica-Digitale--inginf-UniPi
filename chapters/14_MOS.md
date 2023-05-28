@@ -1,6 +1,6 @@
 # I MOS - Metal Oxide Semiconductor
 
-## Transistori MOSFET 
+## Transistori MOSFET
 
 I **MOSFET** sono della famiglia dei FET [Transistori a Effetto di Campo], ovvero dispositivi il cui funzionamento dipende da un campo elettrico, e sono assimilabili a **generatori di corrente controllati in tensione**.
 Una differenza rispetto ai BTJ è che il suo comportamento dipende dai **portatori maggioritari**, a differenza dei BTJ che dipendono dai portatori minoritari immessi in base.
@@ -9,7 +9,7 @@ Un possibile schema circuitale è il seguente:
 
 ![Schema circuitale di un MOSFET](../images/14_MOS/CircuitoFet.jpeg)
 
-Nella maglia di ingresso c'è, oltre il terminale di controllo ovvero la tensione $V_1$, un'impedenza infinita che viene rappresentata da un circuito aperto, ovvero $I_1 = 0$. Per i nostri scopi infatti la corrente assorbita dal terminale di controllo è nulla. Nell'altro terminale c'è una corrente tale che $I_2 = g_MV_1$, dove $g_M$ è il rapporto tra corrente di uscita e tensione in ingresso; si tratta di una **transcodduttanza**, in quanto il suo valore è un rapporto tra grandezze appartenenti a maglie diverse
+Nella maglia di ingresso c'è, oltre il terminale di controllo ovvero la tensione $V_1$, un'impedenza infinita che viene rappresentata da un circuito aperto, ovvero $I_1 = 0$. Per i nostri scopi infatti la corrente assorbita dal terminale di controllo è nulla. Nell'altro terminale c'è una corrente tale che $I_2 = g_MV_1$, dove $g_M$ è il rapporto tra corrente di uscita e tensione in ingresso; si tratta di una **trans-conduttanza**, in quanto il suo valore è un rapporto tra grandezze appartenenti a maglie diverse
 
 ## Condensatore MOS
 
@@ -23,13 +23,13 @@ Le varie parti che compongono il condensatore sono:
 - uno strato di **Ossido di Silicio**, perfettamente **isolante**;
 - un elettrodo di metallo, conduttore perfetto, che viene chiamato **gate**, che sarà il terminale di controllo della corrente in uscita.
 
-Dal punti di vista fisico, è interessante come i millimetri dello strato di Ossido di Silicio vengano ridotti sia per occupare meno spazio, sia per consumare meno corrente; d'altro canto avere uno strato più sottile di $7mm$ porterebbe il SIlicio a perdere le sue caratteristiche isolanti.
+Dal punti di vista fisico, è interessante come i millimetri dello strato di Ossido di Silicio vengano ridotti sia per occupare meno spazio, sia per consumare meno corrente; d'altro canto avere uno strato più sottile di $7nm$ porterebbe il Silicio a perdere le sue caratteristiche isolanti.
 
 A seconda della tensione di gate $V_G$ che entra nel diodo avremo differenti comportamenti.
 
 ### Dispositivo in accumulazione
 
-Quando applico una tensione $V_G<0$. il gate inizierà a caricarsi **negativamente**, accumulando elettroni liberi sul terminale, e quindi il substrato inizierà a caricarsi positivamente. 
+Quando applico una tensione $V_G<0$. il gate inizierà a caricarsi **negativamente**, accumulando elettroni liberi sul terminale, e quindi il substrato inizierà a caricarsi positivamente.
 
 ![Dispositivo in accumulazione](../images/14_MOS/Accumulatore.jpeg)
 
@@ -37,15 +37,15 @@ Si genera dunque un campo elettrico tale che alcune lacune libere del substrato 
 
 ### Dispositivo in svuotamento
 
-Questo è il caso in cui la tensione applicata al gate è positiva: avrò delle cariche positive sul gate che saranno compensate, nel substrato, dalla carica negativa causata dagli ioni accettori, che a loro volta non sono più compensati dalle rispettive lacune respinte lontano dalla superficie.
+Questo è il caso in cui la tensione applicata al gate è positiva, ma comunque minore di una tensione soglia $V_T$: avrò delle cariche positive sul gate che saranno compensate, nel substrato, dalla carica negativa causata dagli ioni accettori, che a loro volta non sono più compensati dalle rispettive lacune, respinte lontano dalla superficie.
 
 ![Dispositivo in svuotamento](../images/14_MOS/Svuotamento.jpeg)
 
-La tensione positiva ha generato un campo elettrico che è andati ad allontanare le lacune di superficie del substrato, facendola diventare una **zona di svuotamento**, formata dagli ioni accettori che precedentemente erano compensati dalle lacune. A conti fatti, la zona di svuotamento avrà una carica complessiva negativa, pari alla carica positiva del gate. 
+La tensione positiva ha generato un campo elettrico che è andato ad allontanare le lacune di superficie del substrato, facendola diventare una **zona di svuotamento**, nella quale la concentrazione di lacune è minore rispetto al resto del substrato, che sarà formata dagli ioni accettori che precedentemente erano compensati dalle lacune. A conti fatti, la zona di svuotamento avrà una carica complessiva negativa, pari alla carica positiva del gate.
 
 ### Dispositivo in inversione
 
-Per valori di $VG \gg 0$ avremo un comportamento inedito: quando il campo elettrico aumenta di intensità, allontanerà sempre di più le lacune, portando lo stesso ad attirare in superficie gli elettroni liberi del substrato P, in questo caso minoritari, che si sono generati termicamente. 
+Per valori di $VG \ge V_T$ avremo un comportamento inedito: quando il campo elettrico aumenta di intensità, allontanerà sempre di più le lacune, portando lo stesso ad attirare in superficie gli elettroni liberi del substrato P, in questo caso minoritari, che si sono generati termicamente.
 Gli elettroni tendono ad accumularsi in superficie quindi, dopo un certo tempo, esisterà una regione in cui si sono accumulati questi elettroni, tali da compensare, assieme alle cariche fisse, la carica positiva del gate.
 
 ![Dispositivo in inversione](../images/14_MOS/Inversione.jpeg){width=50%}
@@ -58,9 +58,9 @@ Un MOSFET è formato da un condensatore MOS al quale sono affiancate due zone di
 
 ![Sezione di un MOSFET](../images/14_MOS/SezioneMOSFET.jpeg)
 
-I pozzetti devono parzialmente essere sovrapposti all'Ossido, e la zona interposta tra i due pozzetti viene detta **regione di canale**, che avrà una sua larghezza e una sua lunghezza, importanti per alcuni concetti che verranno successivamente trattati.
+I pozzetti **devono parzialmente essere sovrapposti all'Ossido**, e la zona interposta tra i due pozzetti viene detta **regione di canale**, che avrà una sua larghezza e una sua lunghezza, importanti per alcuni concetti che verranno successivamente trattati.
 
-Il **source** è il terminale che **fornisce i portatori**, mentre **drain** li riceve; la corrente scorrerà da Source a Drain quando vengono rifornite lacune, mentre se vengono riforniti elettroni, la corrente scorrerà in senso opposto, e ciò viene regolato dalla tensione applicata su **gate**, che è il terminale di controllo del dispositivo. 
+Il **source** è il terminale che **fornisce i portatori**, mentre **drain** li riceve; la corrente scorrerà da Source a Drain quando vengono rifornite lacune, mentre se vengono riforniti elettroni, la corrente scorrerà in senso opposto, e ciò viene regolato dalla tensione applicata su **gate**, che è il terminale di controllo del dispositivo.
 
 Il terminale di **body** verrà messo a *ground*; schematizziamo inoltre le giunzioni $N^+P$ come dei diodi che, per garantire il corretto funzionamento del dispositivo, devono essere **in inversa**. Per garantire ciò è sufficiente che la tensione in body sia **la più piccola di tutto il circuito**, in modo da poter mettere a ground l'anodo del diodo, avendo come unico risultato una polarizzazione **inversa**. In questo modo tra Source e Drain non può scorrere corrente, analogamente ad un BJT NPN in interdizione.
 
@@ -86,7 +86,7 @@ Il fenomeno dell'inversione visto nel condensatore MOS si verifica anche nel MOS
 
 ## Studio del canale di un MOSFET
 
-Ipotizziamo di aver appunto creato il canale tra Source e Drain, e quindi di avere $V_{GS}>0$: vediamo ora il suo comportamento quando viene applicata una tensione ai suoi estremi.
+Ipotizziamo di aver appunto creato il canale tra Source e Drain, e quindi di avere $V_{GS}>V_T$: vediamo ora il suo comportamento quando viene applicata una tensione ai suoi estremi.
 
 ### Caso per $V_{DS} > 0$ e piccola
 
@@ -94,8 +94,8 @@ Per ipotesi poniamo che Source sia alla tensione di riferimento, e che a drain v
 
 ![MOSFET con $V_{DS}>0$](../images/14_MOS/MOSFETVDS.jpeg)
 
-Applicando questa tensione ci rendiamo conto che il terminale di Drain inizia ad **attrarre elettroni**, risultando in uno **scorriemento** di elettroni tra Source e Drain. Questo perchè Source, come suggerisce il nome, fornisce i portatori, mentre Drain li riceve. Se contemporaneamente aumento $V_{GS}$, mantenendo però costante $V_{DS}$, sperimenterò un **aumento dello spessore del canale**, una diminuzione della **resistenza di canale** e un **aumento della corrente**.
-La relazione tra corrente e tensione è lineare, in quanto il canale è **uniforme** per tensioni piccole, che era la nostre ipotesi, e segue qeusto andamento:
+Applicando questa tensione ci rendiamo conto che il terminale di Drain inizia ad **attrarre elettroni**, risultando in uno **scorrimento** di elettroni tra Source e Drain. Questo perché Source, come suggerisce il nome, fornisce i portatori, mentre Drain li riceve. Se contemporaneamente aumento $V_{GS}$, mantenendo però costante $V_{DS}$, sperimenterò un **aumento dello spessore del canale**, una diminuzione della **resistenza di canale** e un **aumento della corrente**.
+La relazione tra corrente e tensione è lineare, in quanto il canale è **uniforme** per tensioni piccole, che era la nostre ipotesi, e segue questo andamento:
 
 ![Relazione tra corrente e tensione](../images/14_MOS/AndamentoI.jpeg)
 
@@ -112,7 +112,7 @@ Quando $V_{DS}$ diventa non trascurabile, il canale non è più uniforme, persin
 
 ![MOSFET con $V_{DS}>0$ e non trascurabile](../images/14_MOS/VdNonTrascurabile.jpeg)
 
-Quello che determina la presenza o meno del canale, ed eventualmente quando vale la tensione in quel punto, è la differenza di potenziale tra Source e il punto, che chiamiamo $x$: ho il canale se $V_{Gx} \geq V_T$. 
+Quello che determina la presenza o meno del canale, ed eventualmente quando vale la tensione in quel punto, è la differenza di potenziale tra Source e il punto, che chiamiamo $x$: ho il canale se $V_{Gx} \geq V_T$.
 Scrivo $V_{Gx}$ come $V_{Gx} = V_{GS} + V_{Sx}$, che è appunto la caduta di potenziale tra Source e il punto $x$.
 
 ### Lo strozzamento del canale
@@ -139,7 +139,7 @@ $$V_{xS} = V_{GS} - V_T$$
 
 Si noti infine che per punti di pinch-off tali che la loro distanza da Drain $\Delta L$, con $\Delta L \ll L$, la resistenza del canale rimane sostanzialmente immutata, e vale $R = \rho \frac{L}{W}$. Nonostante però il canale sia strozzato, la corrente **continua a scorrere in maniera costante**: ciò è dovuto alla zona di svuotamento che, assieme al campo elettrico, crea delle condizioni favorevoli al passaggio di elettroni, proprio tra il punto di pinch-off e Drain. Il fatto che sia costante è giustificato dalla resistenza immutata del canale citata precedentemente, che assicura un flusso di cariche costante.
 
-### Conlusioni
+### Conclusioni
 
 Abbiamo individuato due principali zone di funzionamento del MOSFET: una per $V_{DS} < V_{GS} - V_T$, e una per $V_{DS} > V_{GS} - V_T$. La prima zona di funzionamento viene detta **Zona triodo**, e la seconda **Zona di saturazione**.
 
@@ -155,7 +155,6 @@ dove:
 - $C_{ox}$ è la capacità di ossido, data dal rapporto tra la costante dielettrica e lo spessore dell'ossido;
 - $W$ è la larghezza del canale;
 - $L$ è la lunghezza del canale.
-
 
 #### Zona di saturazione
 
@@ -173,7 +172,7 @@ $$i_{DS} = k\cdot (V_{GS} - V_T)^2$$
 
 dove $k$ è una costante di proporzionalità.
 
-Nella realtà la curva della corrente non è perfettamente orizzontale, questo perchè non possiamo considerare $\Delta L$ trascurabile oltre una certa soglia, e ciò da vita ad un fenomeno simile all'effetto Early: prolungando le caratteristiche, esse si incontrano in un punto del secondo quadrante, detto $-\frac{1}{\lambda}$.
+Nella realtà la curva della corrente non è perfettamente orizzontale, questo perché non possiamo considerare $\Delta L$ trascurabile oltre una certa soglia, e ciò da vita ad un fenomeno simile all'effetto Early: prolungando le caratteristiche, esse si incontrano in un punto del secondo quadrante, detto $-\frac{1}{\lambda}$.
 
 ![Il punto $-\frac{1}{\lambda}$](../images/14_MOS/lambda.jpeg)
 
@@ -181,13 +180,13 @@ Teniamo conto di questo effetto nella formula aggiungendo un fattore dipendente 
 
 $$i_{DS} = \mu_n \cdot C_{ox} \cdot \frac{W}{L} \cdot (V_{GS} - V_T)^2 \cdot (1+\lambda v_{ds})$$
 
-#### La transcaratteristica di un MOSFET
+#### La trans-caratteristica di un MOSFET
 
-Se $\Delta L$ è sufficientemente piccolo, possiamo rappresentare il MOSFET tramite una **transcaratteristica** sul piano $I_{DS} / V_{GS}$, tramite una curva che esprime la corrente in uscita dal Drain in funzione della tensione tra il Gate e la Source.
+Se $\Delta L$ è sufficientemente piccolo, possiamo rappresentare il MOSFET tramite una **trans-caratteristica** sul piano $I_{DS} / V_{GS}$, tramite una curva che esprime la corrente in uscita dal Drain in funzione della tensione tra il Gate e la Source.
 
-![La transcaratteristica per un MOSFET](../images/14_MOS/Transcaratterisrica.png){width=60%}
+![La trans-caratteristica per un MOSFET](../images/14_MOS/Transcaratterisrica.png){width=60%}
 
-Questa viene usata quando il MOSFET entra in zona di saturazione perchè sappiamo che, considerando un $\lambda$ piccolo, la relazione tra $I_D$ e $V_{GS}$ è quadratica. Questa sarà traslata in $V_T$ e sarà unica, a patto di essere in zona di saturazione.
+Questa viene usata quando il MOSFET entra in zona di saturazione perché sappiamo che, considerando un $\lambda$ piccolo, la relazione tra $I_D$ e $V_{GS}$ è quadratica. Questa sarà traslata in $V_T$ e sarà unica, a patto di essere in zona di saturazione.
 
 ## Transistore MOSFET a canale P
 
@@ -197,19 +196,19 @@ Nei P-MOSFET la condizione per la presenza del canale è che $V_{GS} \le V_{TP}$
 
 I transistori MOS a canale P mostrano prestazioni inferiori, a parità di caratteristiche, rispetto ai corrispondenti transistori a canale N, a causa della mobilità ridotta delle lacune rispetto a quella degli elettroni. Tuttavia, è possibile compensare questa ridotta mobilità aumentando la larghezza del canale $W$, pratica comune poiché la disponibilità di transistori MOS complementari è fondamentale nella tecnologia CMOS.
 
-In particolare, le prestazioni inferiori sono dovute principalmente alla mobilità delle lacune, che è circa 1/3 di quella degli elettroni. 
+In particolare, le prestazioni inferiori sono dovute principalmente alla mobilità delle lacune, che è circa $\frac{1}{3}$ di quella degli elettroni.
 
 In definitiva, il MOSFET a canale P è più grande di un MOSFET a canale N, a parità di prestazioni.
 
 ## Cenni ai MOSFET a svuotamento
 
-I MOSFET visti in precedenza appartengono alla categoria dei **MOSFET ad arricchimento**, poichè il canale viene costriito solo dopo l'applicazione di una certa tensione al Gate. 
+I MOSFET visti in precedenza appartengono alla categoria dei **MOSFET ad arricchimento**, poiché il canale viene costruito solo dopo l'applicazione di una certa tensione al Gate.
 
 Esiste tuttavia un'altra categoria di MOSFET, che non verrà trattata nel corso, in cui il canale tra Source e Drain viene **realizzato direttamente dal costruttore**, per cui il canale esiste anche per $V_{GS} = 0$: essi vengono chiamati **MOSFET a svuotamento**.
 
-Se vogliamo interdire il passaggio di corrente è necessario applicare una tensione negativa tra *gate* e *source*, che modifica la transacaatteristica del MOSFET rendendo $V_T$ negativa:
+Se vogliamo interdire il passaggio di corrente è necessario applicare una tensione negativa tra *gate* e *source*, che modifica la trans-caratteristica del MOSFET rendendo $V_T$ negativa:
 
-![Transcaratteristica di un MOSFET a svuotamento](../images/14_MOS/transMOSFsvuo.png){width=50%}
+![Trans-caratteristica di un MOSFET a svuotamento](../images/14_MOS/transMOSFsvuo.png){width=50%}
 
 ## Simboli circuitali di un MOSFET
 

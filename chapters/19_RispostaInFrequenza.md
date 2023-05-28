@@ -14,7 +14,7 @@ Dovrei quindi calcolare tutti i poli e gli zeri del circuito, per poi passare ef
 
 ![Circuito in frequenza](./../images/19_RispostaInFrequenza/freq1.jpeg)
 
-Ogni condensatore inserisce uno zero nell'origine, perchè a frequenze nulle sono assimilabili a dei circuiti aperti, ed essendo in serie al percorso della corrente, la annulleranno; generalmente, in un circuito, il numero di poli è pari al numero di **elementi reattivi indipendenti**. Ad esempio, un condensatore in serie ad un induttore non è un elemento reattivo indipendente, perchè la i due elementi reattivi dipendono uno dall'altro. 
+Ogni condensatore inserisce uno zero nell'origine, perché a frequenze nulle sono assimilabili a dei circuiti aperti, ed essendo in serie al percorso della corrente, la annulleranno; generalmente, in un circuito, il numero di poli è pari al numero di **elementi reattivi indipendenti**. Ad esempio, un condensatore in serie ad un induttore non sono due elemento reattivi indipendente, in quanto i due elementi dipendono uno dall'altro.
 
 ## Il ruolo dei condensatori
 
@@ -48,19 +48,19 @@ Notiamo che i condensatori interni hanno sempre un'impedenza molto elevata, e co
 
 * a **basse frequenze** considero i condensatori interni come circuiti aperti;
 * a **medie frequenze** considero i condensatori interni come circuiti aperti, e quelli esterni come cortocircuiti;
-* ad **alte frequenze** consdero i condensatori esterni come cortocircuiti.
+* ad **alte frequenze** considero i condensatori esterni come cortocircuiti.
 
-Confrontando queste assunzioni con le indicazioni che ci eravamoa dati per lo studio in AC, ci rendiamo conto come in effetti tale procedura sia di fatto un'analisi a **medie frequenze**.
+Confrontando queste assunzioni con le indicazioni che ci eravamo dati per lo studio in AC, ci rendiamo conto come in effetti tale procedura sia di fatto un'analisi a **medie frequenze**.
 
 ## Diagramma di Bode
 
-Comunemente gli amplificatori hanno un andamento nel diagramma di Bode del tipo:
+Comunemente, gli amplificatori hanno un andamento nel diagramma di Bode del tipo:
 
 ![Diagramma di Bode](./../images/19_RispostaInFrequenza/freq2.jpeg){ width=60%}
 
 La **larghezza di banda** è definita come la distanza tra $f_L$, dove L sta per *lower*, e $f_H$, dove H sta per *higher*, ovvero la distanza tra i due punti che indicano rispettivamente i limiti **inferiori** e **superiori** di banda, e sono di solito separati da circa due ordini di grandezza, per cui posso separare i due tipi di condensatori con una buona approssimazione.
 Ad alte frequenze vediamo **un'attenuazione** del segnale: un esempio pratico è il caso in cui il segnale passa dal Gate al Drain **senza amplificazione**.
-Infine, chiamiamo la $f_T$ la frequenza di **transizione**, ovvero il valore per il quale il guadagno di corrente in cortocircuito, nella configurazione ad emettitore comune, diventa **unitaria**: il suo valore si può trovare nei datasheet dei vari componenti utilizzati nel circuito.
+Infine, chiamiamo la $f_T$ la frequenza di **transizione**, ovvero il valore per il quale il guadagno di corrente in cortocircuito, nella configurazione ad emettitore comune, diventa **unitaria**: il suo valore si può trovare nei data-sheet dei vari componenti utilizzati nel circuito.
 
 ## Alcuni usi digitali di amplificatori ed elementi attivi
 
@@ -71,13 +71,13 @@ I simboli logici e circuitali sono i seguenti:
 ![Simboli logici e circuitali](./../images/19_RispostaInFrequenza/inverter.jpeg){width=70%}
 
 dove $V^+$ e $V^-$ sono definiti in base alla famiglia logica, e sono le tensioni di alimentazione del circuito: l'inverter infatti è un **elemento attivo**, e quindi ha bisogno di alimentazione.
-Assegnamo al valore logico *1* il valore della tensione $V_H$, e allo *0* quello di $V_L$, e passiamo allo studio della **caratteristica di trafenferimento**, della quale troviamo il grafico seguente:
+Assegnamo al valore logico *1* il valore della tensione $V_H$, e allo *0* quello di $V_L$, e passiamo allo studio della **caratteristica di trasferimento**, della quale troviamo il grafico seguente:
 
 ![Caratteristica di trasferimento](./../images/19_RispostaInFrequenza/inverter2.jpeg){width=50%}
 
 Vediamo subito come le tensioni siano limitate tra i valori di $V^+$ e $V^-$; la caratteristica ideale è sì verticale, ma non è necessario che raggiunga i valori di $V^+$ e $V^-$.
 Il valore di tensione per il quale c'è la transizione è $V_{ref}$: in questo caso è posizionato a metà dell'escursione di tensione, ma ciò non è sempre vero e in generale dipende dal dispositivo.
-La caratteristica reale ricorda ovviamente quella ideale, ma ovviamente non è verticale e non è nemmeno una retta, ma assume una forma più tondeggiante: più questa curva però si avvicina a quella verticale, migliore sarà la **rigenerazione** di un segnale degradato, ovvero la capacità di ripristinare un segnale che ha perso la sua forma originale.
+La caratteristica reale ricorda inevitabilmente quella ideale, ma ovviamente non è verticale e non è nemmeno una retta, ma assume una forma più tondeggiante: più questa curva però si avvicina a quella verticale, migliore sarà la **rigenerazione** di un segnale degradato, ovvero la capacità di ripristinare un segnale che ha perso la sua forma originale.
 
 ### Inverter con BJT
 
@@ -85,7 +85,7 @@ Lo schema circuitale prevede, ovviamente, la presenza di un BJT, ed è il seguen
 
 ![Inverter con BJT](./../images/19_RispostaInFrequenza/InvBJT.jpeg)
 
-Il comportamento del circuito dipenderà dai valori di $V_I$, $R_B$ e $R_C$. 
+Il comportamento del circuito dipenderà dai valori di $V_I$, $R_B$ e $R_C$.
 
 Nella maglia d'ingresso avremo $V_I = R_Bi_B +v_{BE}$, mentre in quella d'uscita $V_I = R_Bi_B + v_{CE}$la quale viene ricavata tramite l'analisi della caratteristica di entrata:
 
@@ -93,17 +93,17 @@ Nella maglia d'ingresso avremo $V_I = R_Bi_B +v_{BE}$, mentre in quella d'uscita
 
 Abbiamo due casi possibili:
 
-1. se $V_I << V_\gamma$, abbiamo sia la giunzione Base-Emettitore che quella Base-Collettore polarizzati in inversa, per cui abbiamo un comportamento assimilabile ad un *interruttore in OFF*;
-2. se $V_I >> V_\gamma$, abbiamo invece entrambe le giunzioni polarizzate in diretta, per cui il punto di riposo Q è in saturazione.
+1. se $V_I \ll V_\gamma$, abbiamo sia la giunzione Base-Emettitore che quella Base-Collettore polarizzati in inversa, per cui abbiamo un comportamento assimilabile ad un *interruttore in OFF*;
+2. se $V_I \gg V_\gamma$, abbiamo invece entrambe le giunzioni polarizzate in diretta, per cui il punto di riposo Q è in saturazione.
 
 Esiste in realtà un altro funzionamento: se $V_I = V_{DD}$ e $V_{BE} \approx V_\gamma$, si ricava $i_B= \frac{V_{DD} - V_\gamma}{R_B}$ che equivale a $I_{B4}$ nel disegno della caratteristica. Risulta evidente come in questo caso il punto di lavoro dipende esplicitamente dal valore delle resistenze $R_B$ e $R_C$, per cui è necessario modificare questi elementi circuitali per ottenere un punto di lavoro desiderato.
 
 #### Verifica della saturazione
 
-Avremo necessità di varie equazioni, alcune delle quali già note per ipotesi: la base $I_B \approx \frac{V_{DD}}{R_B}$, con $V_\gamma << V_{DD}$.
-Per il collettore invece $I_C \approx \frac{V_DD}{R_{CC}}$ con $V_{CE} << V_{DD}$.
+Avremo necessità di varie equazioni, alcune delle quali già note per ipotesi: la base $I_B \approx \frac{V_{DD}}{R_B}$, con $V_\gamma \ll V_{DD}$.
+Per il collettore invece $I_C \approx \frac{V_DD}{R_{CC}}$ con $V_{CE} \ll V_{DD}$.
 
-Ricaviamo dunque che $\frac{V_{DD}}{R_C} << \beta_F \frac{V_{DD}}{R_B}$, e duqnue infine $R_B <<\beta_F R_C$.
+Ricaviamo dunque che $\frac{V_{DD}}{R_C} \ll \beta_F \frac{V_{DD}}{R_B}$, e dunque infine $R_B \ll \beta_F R_C$.
 
 #### Esempio implementativo con BJT
 
@@ -111,7 +111,7 @@ Supponiamo di avere $V_{DD} = 5V$, $\beta_F = 50$, $R_C = 1k\Omega$ e $R_B = 10k
 
 ![Esempio implementativo](./../images/19_RispostaInFrequenza/InvBJT3.jpeg)
 
-É possibile notare dal grafico come si tratti di un inverter che presenta una **forte asimmetria**, poichè il suo grafico è molto spostato verso sinistra; è poco immune al rumore prima di arrivare a $V_\gamma$, mentre dopo è molto più immune. Infine vediamo che a interruttore chiuso viene dissipata **molta potenza**, a causa del collegamento tra $V_{DD}$ e *Ground* e della resistenza nel percorso. Questo fenomeno viene chiamato **dissipazione statica di potenza**, poihcè la potenza viene dissipata anche quando il circuito non è effettivamente in funzione; questa problematica verrà risolta con l'uso dei CMOS.
+É possibile notare dal grafico come si tratti di un inverter che presenta una **forte asimmetria**, poiché il suo grafico è molto spostato verso sinistra; è poco immune al rumore prima di arrivare a $V_\gamma$, mentre dopo è molto più immune. Infine vediamo che a interruttore chiuso viene dissipata **molta potenza**, a causa del collegamento tra $V_{DD}$ e *Ground* e della resistenza nel percorso. Questo fenomeno viene chiamato **dissipazione statica di potenza**, poiché la potenza viene dissipata anche quando il circuito non è effettivamente in funzione; questa problematica verrà risolta con l'uso dei CMOS.
 
 ### Inverter con NMOS
 
@@ -122,11 +122,11 @@ Lo schema circuitale e la caratteristica del circuito sono i seguenti:
 Riconosciamo le zone di funzionamento:
 
 * per $V_I = V_{GS} < V_T$, allora avremo Q **interdetto** e $V_O = V_{DD}$. Anche se siamo in interdizione, una piccola parte di corrente scorre;
-* se $V_I >> V_T$, allora risulta Q **triodo**, e dunque $V_O$ sarà piccola.
+* se $V_I \gg V_T$, allora risulta Q **triodo**, e dunque $V_O$ sarà piccola.
 
 #### I parametri regolatori
 
-Per ipotesi ci troviamo in zona triodo, per cui: $i_D \approx (\mu_n C_{OX}) \frac{W}{L}(V_{GS} - V_T )V_{DS}$, ma $v_{DS} << V_{DD}$ che implica $i_D \approx \frac{V_DD}{R_D}$
+Per ipotesi ci troviamo in zona triodo, per cui: $i_D \approx (\mu_n C_{OX}) \frac{W}{L}(V_{GS} - V_T )V_{DS}$, ma $v_{DS} \ll V_{DD}$ che implica $i_D \approx \frac{V_DD}{R_D}$
 
 Unendo le equazioni ricaviamo:
 
@@ -146,13 +146,11 @@ $$\qquad$$
 $$\qquad$$
 $$\qquad$$
 
-
-
 ## Teoria della reazione semplificata
 
 ### Introduzione
 
-Il principio della reazione consiste nel **riportare all'ingresso di un sistema una porzione del segnale in uscita** dallo stesso, in modo da modificare le proprierà del sistema stesso.
+Il principio della reazione consiste nel **riportare all'ingresso di un sistema una porzione del segnale in uscita** dallo stesso, in modo da modificare le proprietà del sistema stesso.
 Generalmente, nei casi nei quali è necessario **mantenere una grandezza in uscita costante**, si parla, e si realizza, una reazione **negativa**, ovvero che il segnale riportato in ingresso ha **segno inverso** rispetto al segnale che lo ha prodotto: così facendo ogni variazione determina un effetto in senso opposto, che tende a contrastare la variazione stessa. Questo tipo di reazione è quella che viene maggiormente utilizzata in campo elettronico, visto il bisogno di generare tensioni e correnti stabili.
 
 ### Schema generale di un sistema retroazionato
@@ -173,7 +171,7 @@ Queste tipologie di reti vengono **collegate in parallelo** alla rete di reazion
 
 ##### Reti di prelievo di corrente
 
-In questo caso si fa in modo che la rete di reazione sia **collegata in serie** al carico. Nella rete di reazione scorrerà quindi la stessa corrente del carico, alla quale verrà applicata il fattore di guadagnodella reazione $\beta$. Dal punto di vista circuitale, avremo un collegamento come quello in figura:
+In questo caso si fa in modo che la rete di reazione sia **collegata in serie** al carico. Nella rete di reazione scorrerà quindi la stessa corrente del carico, alla quale verrà applicata il fattore di guadagno della reazione $\beta$. Dal punto di vista circuitale, avremo un collegamento come quello in figura:
 
 ![Rete di prelievo di corrente](./../images/19_RispostaInFrequenza/PrelievoC.png){width=30%}
 
@@ -186,14 +184,13 @@ Queste reti sono anche dette *di reinserimento*, e si occupano di **sommare** i 
 $$\qquad$$
 $$\qquad$$
 
-
 ### Guadagno di reazione
 
 Partiamo da alcune ipotesi semplificative che ci saranno utili nella trattazione semplificata:
 
 * il blocco amplificatore è **unidirezionale**;
 * la rete di reazione è **unidirezionale**;
-* il fattore di reazione $\beta$ è indipedente dalle resistenze di sorgente e di carico.
+* il fattore di reazione $\beta$ è indipendente dalle resistenze di sorgente e di carico.
 
 La **funzione di trasferimento** del nostro sistema sarà definita come $H = \frac{X_0}{X_S}$, dove $X_0$ è la funzione in uscita dal blocco amplificatore, e $X_S$ è la funzione di sorgente. Conoscendo essa, possiamo calcolare il guadagno della rete di reazione.
 

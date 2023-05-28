@@ -6,7 +6,7 @@ Abbiamo la possibilità di analizzare un BJT come un quadripolo lineare, che pu�
 
 ![Schema del BJT come un quadripolo con il suo sistema di equazioni](../images/17_PIccoliSegnaliBJT/eqH.jpeg)
 
-Analizziamo uno alla volta ogni parametro:
+Analizziamo uno alla volta ogni parametro.
 
 ### $h_{11}$
 
@@ -22,9 +22,9 @@ Definito come $h_{21} = \frac{i_2}{i_1}|_{v_2=0} = h_{fe}$, che sta per **e**met
 
 ### $h_{22}$
 
-Definito come $h_{22} = \frac{i_2}{v_2}|_{i_1=0} = h_{oe}$, che sta per **e**mettitore comune in **o**utput, ed è l'ammettenzza di uscita in circuito aperto, ovvero con $i_1 = 0$. Essendo un'ammettenza, ha come unità di misura $\Omega^{-1}$.
+Definito come $h_{22} = \frac{i_2}{v_2}|_{i_1=0} = h_{oe}$, che sta per **e**mettitore comune in **o**utput, ed è l'ammettenza di uscita in circuito aperto, ovvero con $i_1 = 0$. Essendo un'ammettenza, ha come unità di misura $\Omega^{-1}$.
 
-### Perchè 4 parametri?
+### Perché 4 parametri?
 
 I 4 parametri sono, dal punto di vista matematico, le derivate parziali dello sviluppo di Taylor; esse infatti **linearizzano** le caratteristiche del BJT nell'intorno del punto di lavoro Q.
 
@@ -37,26 +37,30 @@ Applichiamo quanto visto ad un BJT, partendo dal suo circuito, analizzandolo com
 Le caratteristiche di ingresso ed uscita saranno due funzioni dipendenti dalle grandezze del multipolo. In particolare la caratteristica di ingresso sarà $i_C(t) = f (v_{CE}, i_B)$, mentre la caratteristica di uscita sarà $i_B(t) = g_1 (v_{BE}, v_{CE})$.
 Iniziamo la procedura di linearizzazione, svolgendo lo **sviluppo di Taylor** fino al primo membro; per la caratteristica di ingresso avremo:
 
-$$v_{BE} = V_{BEQ} + v_{be} = g(I_{BQ} + i_B, V_{CEQ} + v_{ce}) = g(I_{BQ}, V_{CEQ}) + \frac{\delta g}{\delta i_B}|_Q i_B + \frac{\delta g}{\delta v_{CE}}|_Q v_{CE} + \dots$$
+$$v_{BE} = V_{BEQ} + v_{be} = g(I_{BQ} + i_B, V_{CEQ} + v_{ce}) = g(I_{BQ}, V_{CEQ}) + \frac{\partial g}{\partial i_B}|_Q i_B + \frac{\partial g}{\partial v_{CE}}|_Q v_{CE} + \dots$$
 
 Mentre per la caratteristica di uscita avremo:
 
-$$i_C = I_{CQ} + i_c = f(I_{BQ} + i_B, V_{CEQ} + v_{CE}) = f(I_{BQ}, V_{CEQ}) + \frac{\delta f}{\delta i_B}|Qi_B + \frac{\delta f}{\delta v_{CE}}|Qv_{CE} + \dots$$
+$$i_C = I_{CQ} + i_c = f(I_{BQ} + i_B, V_{CEQ} + v_{CE}) = f(I_{BQ}, V_{CEQ}) + \frac{\partial f}{\partial i_B}|Qi_B + \frac{\partial f}{\partial v_{CE}}|Qv_{CE} + \dots$$
 
 Da questi sviluppi ricaviamo un sistema di due equazioni:
 
-$$\begin{cases} v_{be} \approx \frac{\delta g}{\delta i_b}|_Qi_b + \frac{\delta g}{\delta v_{CE}}|_Q v_{ce} \\ 
-i_c \approx \frac{\delta f}{\delta i_b}|_Q i_b + \frac{\delta f}{\delta v_{CE}}|_Q v_{ce}\end{cases}$$
+$$
+\begin{cases}
+v_{be} \approx \frac{\partial g}{\partial i_b}|_Qi_b + \frac{\partial g}{\partial v_{CE}}|_Q v_{ce} \\
+i_c \approx \frac{\partial f}{\partial i_b}|_Q i_b + \frac{\partial f}{\partial v_{CE}}|_Q v_{ce}
+\end{cases}
+$$
 
 Riconosciamo i parametri h del quadripolo, che sono:
 
-$$\begin{cases} h_{ie} = \frac{\delta v_{BE}}{{\delta i_B}}|_Q 
+$$\begin{cases} h_{ie} = \frac{\partial v_{BE}}{{\partial i_B}}|_Q
 \\
-h_{re} = \frac{\delta v_{BE}}{\delta v_{CE}}|_Q
+h_{re} = \frac{\partial v_{BE}}{\partial v_{CE}}|_Q
 \\
-h_{fe} = \frac{\delta i_C}{\delta i_B}|_Q
+h_{fe} = \frac{\partial i_C}{\partial i_B}|_Q
 \\
-h_{oe} = \frac{\delta i_C}{\delta v_{CE}}|_Q
+h_{oe} = \frac{\partial i_C}{\partial v_{CE}}|_Q
 \end{cases}$$
 
 Possiamo, a questo punto, disegnare il circuito equivalente a parametri h:
@@ -83,12 +87,12 @@ Per comprendere meglio il concetto di **linearizzazione** attorno a Q, vediamo u
 
 ### Le ipotesi semplificative
 
-La prima ipotesi è che prenderemo $h_{re} \approx 0$ e dunque trascurabile.
-La seconda è che prenderemo $h_{oe} = \frac{I_{CQ}}{|V_A| + V_{CEQ}}$, e questo perchè:
+La prima ipotesi è che prenderemo $h_{re} \approx 0$ e dunque trascurabile: questa scelta è dettata dal fatto che questo parametro dipende dall'effetto Early, che abbiamo deciso di trascurare, perlomeno all'ingresso.
+La seconda è che prenderemo, proprio in virtù dell'effetto Early in uscita, $h_{oe} = \frac{I_{CQ}}{|V_A| + V_{CEQ}}$, e questo perché:
 
 ![L'ipotesi su $h_{oe}$ dal punto di vista grafico](../images/17_PIccoliSegnaliBJT/hphoe.jpeg){width=50%}
 
-Proseguendo, prenderemo $h_{fe} \approx \beta_F$: è importante che non ci sia l'uguale perchè **non è un'ugualianza**, ma un'approssimazione valida solo in alcuni casi. Infine prendiamo $h_{ie} = r_{bb'} + r_{b'e}$, dove $r_{bb'}$ è una costante, mentre $r_{b'e}$ dipende dal punto Q, e vale $r_{b'e} = \frac{V_T}{I_{CQ}}h_{fe}$. Questi due valori sono delle resistenze dovute alla costruzione fisica del BJT: 
+Proseguendo, prenderemo $h_{fe} \approx \beta_F$: è importante che non ci sia l'uguale perché **non è un'uguaglianza**, ma un'approssimazione valida solo in alcuni casi. Infine prendiamo $h_{ie} = r_{bb'} + r_{b'e}$, dove $r_{bb'}$ è una costante, mentre $r_{b'e}$ dipende dal punto Q, e vale $r_{b'e} = \frac{V_T}{I_{CQ}}h_{fe}$. Questi due valori sono delle resistenze dovute alla costruzione fisica del BJT:
 
 ![Le resistenze $r_{bb'}$ e $r_{b'e}$](../images/17_PIccoliSegnaliBJT/resistenzeFisiche.jpeg){width=40%}
 
@@ -98,7 +102,7 @@ Il terminale di base infatti non è direttamente collegato alla zona interna, ma
 
 ![Circuito equivalente dopo le ipotesi semplificative](../images/17_PIccoliSegnaliBJT/circuitodopohp.jpeg){width=50%}
 
-Abbiamo due rappresentazioni possibili, del tutto equivalenti tra di loro: la seconda è utile perchè è facile trovare il valore di $g_m$, e anche perchè il MOSFET ha un modello analogo a questo per il BJT, che permette un confronto più rapido tra i due dispositivi.
+Abbiamo due rappresentazioni possibili, del tutto equivalenti tra di loro: la seconda è utile perché è facile trovare il valore di $g_m$, e anche perché il MOSFET ha un modello analogo a questo per il BJT, che permette un confronto più rapido tra i due dispositivi.
 
 ### Confronto tra BJT PNP e NPN
 
@@ -106,7 +110,7 @@ Svolgendo la stessa procedura per il BJT PNP, otteniamo che i modelli sono del t
 
 ## Modello linearizzato per il MOSFET per piccoli segnali
 
-L'analisi di un MOSFET risulta decisamente più semplice rispetto a quella di un BJT, perchè per esso disponiamo di un'espressione analitica indicante la corrente. Ci interessa il solo modello in saturazione, del quale riportiamo lo schema e alcune formule utili nella trattazione:
+L'analisi di un MOSFET risulta decisamente più semplice rispetto a quella di un BJT, perché per esso disponiamo di un'espressione analitica indicante la corrente. Ci interessa il solo modello in saturazione, del quale riportiamo lo schema e alcune formule utili nella trattazione:
 
 ![Modello MOSFET in saturazione](../images/17_PIccoliSegnaliBJT/NMOSiniziale.jpeg){width=55%}
 
@@ -118,24 +122,24 @@ Disegnamo ora il circuito equivalente a parametri h:
 
 La formula per la corrente $i-D$ deriva dallo sviluppo di Taylor attorno al punto di riposo, approssimato al primo termine:
 
-$$i_D = f(V_{GSQ}, V_{DSQ}) + \frac{\delta f}{\delta v_{GS}}|_Q v_{gs} + \frac{\delta f}{\delta v_{DS}}|_Q v_{ds} + \dots$$
+$$i_D = f(V_{GSQ}, V_{DSQ}) + \frac{\partial f}{\partial v_{GS}}|_Q v_{gs} + \frac{\partial f}{\partial v_{DS}}|_Q v_{ds} + \dots$$
 
 Sostituendo con le equazioni trovate nella figura precedente, otteniamo:
 
-$$i_D = \frac{\delta i_D}{\delta v_{GS}}|_Q v_{gs} + \frac{\delta i_D}{\delta v_{DS}}|_Q v_{ds} -> i_d = g_mv_{gs} + \frac{v_{ds}}{r_d}$$
+$$i_D = \frac{\partial i_D}{\partial v_{GS}}|_Q v_{gs} + \frac{\partial i_D}{\partial v_{DS}}|_Q v_{ds} -> i_d = g_mv_{gs} + \frac{v_{ds}}{r_d}$$
 
 Una volta trovato il punto di riposo Q, è possibile ottenere il valore di $g_m$ e $r_d$:
 
 $$\begin{cases} g_m = 2k(V_{GS}-V_T)(1+\lambda v_{DS})|_Q = 2\frac{i_D}{(V_{GS}-V_T)}|_Q = 2\frac{I_{DQ}}{V_{GSQ}-V_T}\\r_d^{-1} = k(v{GS}-V_T)^2\lambda|_Q = \frac{i_d}{((1+\lambda v_{DS}))}\lambda|_Q = \frac{I_{DQ}}{(1+\lambda v_{DS})}\lambda = \frac{I_{DQ}}{\frac{1}{\lambda}+V_{DSQ}}
 \end{cases}$$
 
-Per i nostri scopi $\lambda = 0$, e così sarà anche per gli esercizi, per cui la resistenza sarà sostituia da un aperto:
+Per i nostri scopi $\lambda = 0$, e così sarà anche per gli esercizi, per cui la resistenza sarà sostituita da un aperto:
 
 $$r_d = \frac{\frac{1}{\lambda}+V_{DSQ}}{I_{DQ}}$$
 
-Se $\frac{1}{\lambda}>>V_{DSQ}$, allora:
+Se $\frac{1}{\lambda} \gg V_{DSQ}$, allora:
 
-$$r_d = \frac{1}{\lambda I_{DQ}}|_{\lambda->\infty} \approx 0$$
+$$r_d = \frac{1}{\lambda I_{DQ}}|_{\lambda\to\infty} \approx 0$$
 
 Le formule per $i_D$ e $g_m$ possono essere riscritte come:
 

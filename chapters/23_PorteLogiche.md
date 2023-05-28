@@ -6,7 +6,7 @@ Dal punto di vista logico, il circuito dell'inverter CMOS è rappresentato come 
 
 ![Inverter logico](../images/23_PorteLogiche/inverter.jpeg){width=30%}
 
-La tensione in ingresso $V_{IN}$ è rappresentata dalla varabile logica $A$, che va in ingresso al CMOS, mentre la tensione in uscita $V_{OUT}$ è rappresentata dalla variabile logica $y$, che è l'uscita del CMOS.
+La tensione in ingresso $V_{IN}$ è rappresentata dalla variabile logica $A$, che va in ingresso al CMOS, mentre la tensione in uscita $V_{OUT}$ è rappresentata dalla variabile logica $y$, che è l'uscita del CMOS.
 
 ## Schema generale di una porta logica
 
@@ -14,7 +14,7 @@ Lo schema generale di una porta logica a $n$ ingressi, in figura l'esempio è fa
 
 ![Schema generale di una porta logica](../images/23_PorteLogiche/schema.jpeg){width=50%}
 
-La *Pull Up Network* è la rete, composta da transistori PMOS, è responsabile del portare l'sucita $y$ al valore logico $1$, mentre la *Pull Down Network* è la rete, formata dai transistori NMOS, che si occupa del portare l'uscita $y$ al valore logico $0$: da questa descrizione è deducibile il fatto che queste reti **non sono mai contemporaneamente attive**.
+La *Pull Up Network* è la rete, composta da transistori PMOS, è responsabile del portare l'uscita $y$ al valore logico $1$, mentre la *Pull Down Network* è la rete, formata dai transistori NMOS, che si occupa del portare l'uscita $y$ al valore logico $0$: da questa descrizione è deducibile il fatto che queste reti **non sono mai contemporaneamente attive**.
 
 ## Regole di progettazione
 
@@ -62,13 +62,13 @@ Abbiamo ricondotto l'espressione in *sottoespressioni* facilmente rappresentabil
 
 Dagli esempi appena visti, osserviamo come avendo $y = f(\overline{a}, \overline{b}, \overline{c})$ posso implementare direttamente e in modo facile la rete PUN, mentre se ho $\overline{y} = f(a, b, c)$ posso implementare direttamente e in modo facile la rete PDN.
 
-Esiste quindi una dualità tra la PUN e la PDN: se è rispettata lipotesi degli ingressi tutti diretti o tutti negati, allora la rete PUN è la dualità della PDN. Ciò vuol dire che se in una rete ho una serie, nella sua duale avrò un parallelo, e viceversa. É comunque necessario specificare che questa è una **condizione sufficiente**, ma non necessaria, per la dualità tra PUN e PDN.
+Esiste quindi una dualità tra la PUN e la PDN: se è rispettata l'ipotesi degli ingressi tutti diretti, o tutti negati, allora la rete PUN è la dualità della PDN. Ciò vuol dire che se in una rete ho una serie, nella sua duale avrò un parallelo, e viceversa. É comunque necessario specificare che questa è una **condizione sufficiente**, ma non necessaria, per la dualità tra PUN e PDN.
 
 $$\qquad$$
 
 ## La porta logica XOR
 
-In questo contesto possiamo mettere alla prova il principio di dualità appena introdotto, poichè in questa porta non è rispettata la condizione degli ingressi tutti diretti o tutti negati. L'espressione logica è infatti $y = A \oplus B = \overline{A} \cdot B + A \cdot \overline{B}$. Con le leggi di De Morgan possiamo riscrivere l'espressione come $y = \overline{A\cdot B} + A \cdot B$. Per generare le variabili negate faccio uso degli inverter, le cui uscite sono collegate agli ingressi della PUN e della PDN. Il circuito risultante è il seguente:
+In questo contesto possiamo mettere alla prova il principio di dualità appena introdotto, poiché in questa porta non è rispettata la condizione degli ingressi tutti diretti o tutti negati. L'espressione logica è infatti $y = A \oplus B = \overline{A} \cdot B + A \cdot \overline{B}$. Con le leggi di De Morgan possiamo riscrivere l'espressione come $y = \overline{A\cdot B} + A \cdot B$. Per generare le variabili negate faccio uso degli inverter, le cui uscite sono collegate agli ingressi della PUN e della PDN. Il circuito risultante è il seguente:
 
 ![Porta logica XOR](../images/23_PorteLogiche/xor.jpeg){width=70%}
 
@@ -105,7 +105,7 @@ i_{DN} \propto (\frac{W}{L})_N \\
 \frac{\mu_N}{\mu_P} = \frac{(\frac{W}{L})_N}{(\frac{W}{L})_P} = 2.5
 $$
 
-Il valore $2.5$ sarà l'ipotesi costruttiva che utilizzeremo per il resto del corso, dal quale possiamo ricavare alcuni valori che verrano comunemente utilizzati:
+Il valore $2.5$ sarà l'ipotesi costruttiva che utilizzeremo per il resto del corso, dal quale possiamo ricavare alcuni valori che verranno comunemente utilizzati:
 
 * $(\frac{W}{L})_N = n = 2$
 * $(\frac{W}{L})_P = p = 5$
@@ -142,7 +142,7 @@ La disposizione è quella mostrata in figura:
 
 ![Tempo di commutazione in serie](../images/23_PorteLogiche/serie.jpeg){width=25%}
 
-Vediamo la resistenza vista del MOS: essa sarà proporizionale alla sua dimensione, per cui $R_{MOS} \propto \frac{1}{\frac{W}{L}}$. Calcolo la resistenza totale:
+Vediamo la resistenza vista del MOS: essa sarà proporzionale alla sua dimensione, per cui $R_{MOS} \propto \frac{1}{\frac{W}{L}}$. Calcolo la resistenza totale:
 
 $$
 R_{TOT} = R_1 + R_2 = k'[\frac{1}{(\frac{W}{L})_1} + \frac{1}{(\frac{W}{L})_2}] = k'\frac{1}{(\frac{W}{L})_{eq}} $$
@@ -151,11 +151,11 @@ Devo fare in modo che $(\frac{W}{L})_{eq}$ sia equivalente a quello dell'inverte
 
 $$\frac{1}{x} + \frac{1}{x} = \frac{1}{n} \to x =2n$$
 
-Dunque, fatto $n$ il dimensionamento dell'inverter, i due elementi saranno grandi **il doppio** rispetto ad esso, affinchè la loron conduzione sia equivalente a quella dell'inverter.
+Dunque, fatto $n$ il dimensionamento dell'inverter, i due elementi saranno grandi **il doppio** rispetto ad esso, affinché la loro conduzione sia equivalente a quella dell'inverter.
 
 ### Stima dei costi per porte NAND e NOR
 
-Applichiamo i criteri di costo appena visti alle porte NAND e NOR, entrambe con 4 variabili d'ingresso, in modo da capire quale delle due sia più conveniente, fissanto un criterio.
+Applichiamo i criteri di costo appena visti alle porte NAND e NOR, entrambe con 4 variabili d'ingresso, in modo da capire quale delle due sia più conveniente, fissato un criterio.
 
 #### Porta NOR
 
@@ -215,7 +215,7 @@ $$A_{nand} = (4\cdot p + 4\cdot 4 n)L^2 = (4p + 16n)L^2 = 52L^2$$
 
 Dal quale si deduce che la porta NAND è più conveniente in termini di area. É più conveniente mettere in serie gli NMOS, che hanno una mobilità maggiore, rispetto ai PMOS, che hanno una mobilità minore. Avendo più configurazioni disponibili per una stessa porta logica, **si sceglie sempre quella ad area minore**.
 
-In logica complementare si preferisce **non superare i 4 ingressi** ad una porta logica, per non aumentare troppo le capacità e i tempi di attraversamento. In caso di necessità di più ingressi, si preferisce utilizzare più porte logiche in cascata, utilizando più livelli di logica.
+In logica complementare si preferisce **non superare i 4 ingressi** ad una porta logica, per non aumentare troppo le capacità e i tempi di attraversamento. In caso di necessità di più ingressi, si preferisce utilizzare più porte logiche in cascata, utilizzando più livelli di logica.
 
 ## Protezione dalle scariche elettrostatiche
 
@@ -253,15 +253,15 @@ I diodi hanno assumono la funzione di **limitatori di tensione**, mentre la $R$ 
 * $V_{AK1} = 0$ per cui tra Anodo e Catodo c'è $V_{DD}$, e $I_{D1} = - I_{S1} = 0$, dove $I_{S1}$ è la corrente di saturazione del diodo;
 * $V_{AK2} = -V_{DD}$ per cui sono entrambi in inversa: $I_{D2} = - I_{S2} \approx 1nA$.
 
-In un diodo in inversa vi scorre la corrente inversa di saturazione, che è appunto nell'ordine dei $nA$. I due diodi sono peroò polarizzati in punti diversi, tali per cui $|I_{S1}| \not = |I_{S2}|$. La corrente assorbita, quindi, **non è nulla**, perchè appunto $I_{S1} \not = 0 \to I_{IN} \not = 0$
+In un diodo in inversa vi scorre la corrente inversa di saturazione, che è appunto nell'ordine dei $nA$. I due diodi sono però polarizzati in punti diversi, tali per cui $|I_{S1}| \not = |I_{S2}|$. La corrente assorbita, quindi, **non è nulla**, perché appunto $I_{S1} \not = 0 \to I_{IN} \not = 0$
 
-### Incovenienti del circuito di sicurezza
+### Inconvenienti del circuito di sicurezza
 
 L'utilizzo dei circuiti di protezione causa un decremento del *fan-out*: i due diodi non sono mai identici, e avranno sicuramente diverse correnti inverse di saturazione che, come visto, produce una piccola corrente in ingresso. Questa corrente può **portare alla degradazione del segnale logico**. Infatti, prendendo come esempio un'uscita a livello basso che pilota una porta dotata di un circuito di protezione, vediamo come la corrente $I_K$ proveniente dalla porta stessa va a degradare il livello logico basso, che non varrà più $0V$, ma bensì $V_{out} = V_K$, modificando anche il punto di lavoro.
 
 ![Circuito di sicurezza](../images/23_PorteLogiche/sicurezza2.jpeg){width=50%}
 
-Se a valle sono presenti molte porte, le correnti dovute ai circuiti di protezione possono sommarsi, portando ad una degradazione del segnale logico. Otterremmo infatti $I_K > I_{Kmax} \to V_K > V_{OLmax}$, con consegeunte perdita del valore logico. Simili considerazioni possono essere fatte anche per la degradazione di un livello logico alto.
+Se a valle sono presenti molte porte, le correnti dovute ai circuiti di protezione possono sommarsi, portando ad una degradazione del segnale logico. Otterremmo infatti $I_K > I_{Kmax} \to V_K > V_{OLmax}$, con conseguente perdita del valore logico. Simili considerazioni possono essere fatte anche per la degradazione di un livello logico alto.
 
 Nella realtà questo problema viene risolto in virtù del fatto che i circuiti di sicurezza devono essere inseriti solo tra il *mondo esterno* e le porte logiche, e non tra le porte logiche stesse, per cui non si ha il problema del *fan-out*.
 
@@ -277,11 +277,11 @@ Allo stesso modo possiamo realizzare la rete che soddisfa l'espressione logica $
 
 ![Logica pass-transistor](../images/23_PorteLogiche/pass2.jpeg){width=50%}
 
-É importante notare come in circuiti del genere **deve sempre essere presente un collegamento tra *ground* e $V_{DD}$**. Osserviamo com un esempio cosa succederebbe se non fosse presente: immaginiamo un circuito che fa uso di MOS ed interruttori per determinare un'uscita, la cui rappresentazione è la seguente:
+É importante notare come in circuiti del genere **deve sempre essere presente un collegamento tra *ground* e l'uscita**. Osserviamo com un esempio cosa succederebbe se non fosse presente: immaginiamo un circuito che fa uso di MOS ed interruttori per determinare un'uscita, la cui rappresentazione è la seguente:
 
 ![Logica pass-transistor](../images/23_PorteLogiche/pass3.jpeg){width=50%}
 
-Per $S = 1$ il funzionamento è regolare, mentre per $S = 0$ avremo un caso di **alta impedenza**. Questa condizione deve essere evitata in ogni contesto, per cui viene aggiunto un riferimento a *ground* e $V_{DD}$ comandato dall'interruttore $\overline{S}$.
+Per $S = 1$ il funzionamento è regolare, mentre per $S = 0$ avremo un caso di **alta impedenza**. Questa condizione deve essere evitata in ogni contesto, per cui viene aggiunto un riferimento a *ground*, comandato dall'interruttore $\overline{S}$.
 
 ### L'interruttore ideale
 
@@ -298,11 +298,11 @@ Vediamo il funzionamento del circuito per diversi istanti temporali.
 ##### NMOS - caso 1
 
 In questo primo caso abbiamo $t = 0$, $V_{IN} = V_{DD}$, il condensatore scarico e $V_{G} = V_{DD}$, in quanto voglio che il MOS sia in conduzione.
-Ipotizzando un corretto funzionamento delle componenti, il MOS effettivamente conduce, perchè abbiamo $V_{GS} = V_{DD} > V_T$, che appunto implicano la conduzione del MOS. É vero che $V_{DS} > (V_{GS} - V_T)$? Applicando delle sostituzioni, otteniamo $V_{DD} \ge V_{DD} - V_T$, che è sempre vero, per cui il MOS è saturo.
+Ipotizzando un corretto funzionamento delle componenti, il MOS effettivamente conduce, perché abbiamo $V_{GS} = V_{DD} > V_T$, che appunto implicano la conduzione del MOS. É vero che $V_{DS} > (V_{GS} - V_T)$? Applicando delle sostituzioni, otteniamo $V_{DD} \ge V_{DD} - V_T$, che è sempre vero, per cui il MOS è saturo.
 
 ##### NMOS - caso 2
 
-Nel secondo caso abbiamo $t > 0$, $V_S = V_{OUT}$ che aumenta a causa della carica accumulata nel condensatore. Il MOS rimane in saturazione, perchè:
+Nel secondo caso abbiamo $t > 0$, $V_S = V_{OUT}$ che aumenta a causa della carica accumulata nel condensatore. Il MOS rimane in saturazione, perché:
 
 $$
 V_{DS} \ge V_{GS} - V_T \to V_D - V_S \ge V_G - V_S - V_T \to $$
@@ -313,7 +313,7 @@ Dato che per avere il MOS acceso devo avere ancora $V_{GS} > V_T$, trovo che:
 
 $$V_G - V_S = V_{DD} - V_{OUT} \ge V_T \to V_{OUT} \le V_{DD} - V_T$$
 
-Ne deduciamo che **l'NMOS non è in grado di mandare in uscita un valore logico alto pieno**, poichè esso sarà limitato a $V_{DD} - V_T$.
+Ne deduciamo che **l'NMOS non è in grado di mandare in uscita un valore logico alto pieno**, poiché esso sarà limitato a $V_{DD} - V_T$.
 
 ##### NMOS - Analisi del livello alto
 
@@ -330,7 +330,7 @@ I punti di lavoro si spostano lungo la parabola formata dall'equazione della cor
 ##### NMOS - Analisi del livello basso
 
 Vediamo invece come si comporta l'NMOS in caso di livello basso. Le ipotesi sono che $t = 0$, $V_{IN} = 0$, $V_{OUT} = V_{DD}$, $V_G = V_{DD}$, e il circuito è tale al precedente, salvo il fatto che la corrente scorre in direzione opposta. Lavorando sulle tensioni, abbiamo $V_G = V_{DD} \to V_G - V_S = V_{DD} - 0 = V_{DD} > V_T$, che implica il MOS ON.
-La $V_{GS}$ non cambia in funzione della carica del condensatore, poichè esso si trova sul *drain*. Il MOS si trova in saturazione, perchè $V_{DS} = V_D - V_S = V_{DD} > V_{GS} - V_T = V_{DD} - V_T$.
+La $V_{GS}$ non cambia in funzione della carica del condensatore, poiché esso si trova sul *drain*. Il MOS si trova in saturazione, perché $V_{DS} = V_D - V_S = V_{DD} > V_{GS} - V_T = V_{DD} - V_T$.
 Col passare del tempo $V_D$ diminuisce sino ad arrivare a $0$, permettendo una buona trasmissione del segnale logico basso.
 
 ![Caratteristica del MOS](../images/23_PorteLogiche/interruttoreN4.jpeg){width=50%}
@@ -354,7 +354,7 @@ Il punto di lavoro si sposta lungo la caratteristica fino allo $0$; $V_{DS} = 0 
 ##### PMOS - caso 2
 
 Studiamo ora la fase di scarica del condensatore: la corrente scorre in verso opposto rispetto alla carica, e abbiamo $t = 0$, $V_G = 0$, $V_D = 0$ e $V_S = V{DD}$.
-Ricaviamo che il MOS sia ON dal fatto che $V_{GS} = V_G - V_S = -V_{DD} < V_T$, e che è in saturazione dal fatto che $V_{DS} = - V_{DD} < V_{GS} -V_T$. In realtà il MOS è sempre saturo poichè $V_{DS} = V_{GS}$. 
+Ricaviamo che il MOS sia ON dal fatto che $V_{GS} = V_G - V_S = -V_{DD} < V_T$, e che è in saturazione dal fatto che $V_{DS} = - V_{DD} < V_{GS} -V_T$. In realtà il MOS è sempre saturo poiché $V_{DS} = V_{GS}$.
 La corrente vale $i_{DS} = -k(V_{GS} - V_T)^2 = -k(V_{DS} - V_T)^2$, per cui i punti di lavoro saranno l'intersezione tra la parabola della corrente e le caratteristiche della tensione:
 
 ![Caratteristica del MOS](../images/23_PorteLogiche/interruttoreP3.jpeg){width=40%}
@@ -363,7 +363,7 @@ Confermiamo dunque l'ipotesi iniziale, ovvero che il PMOS non riesce a condurre 
 
 #### Considerazioni finali
 
-Inizialmente cercavamo un interruttore ideale, che riuscisse a trasmettere correttamente sia i valori logici alti che quelli bassi, ma abbiamo dimostrato che nè il PMOS nè l'NMOS sono in grado di farlo. 
+Inizialmente cercavamo un interruttore ideale, che riuscisse a trasmettere correttamente sia i valori logici alti che quelli bassi, ma abbiamo dimostrato che nè il PMOS nè l'NMOS sono in grado di farlo.
 
 ### Il Pass-Gate
 
@@ -371,7 +371,7 @@ Inizialmente cercavamo un interruttore ideale, che riuscisse a trasmettere corre
 
 ![Pass-Gate](../images/23_PorteLogiche/passgate.jpeg){width=40%}
 
-Il dispositivo è comandato sia dal segnale diretto che quello negato, risolvendo la problematica della trasmissione non ottimale dei valori logici, poichè il segnale alto viene trasmesso dal PMOS, mentre il segnale basso dal NMOS.
+Il dispositivo è comandato sia dal segnale diretto che quello negato, risolvendo la problematica della trasmissione non ottimale dei valori logici, poiché il segnale alto viene trasmesso dal PMOS, mentre il segnale basso dal NMOS.
 
 ### Differenze tra circuiti CMOS e con Pass-Transistor
 
@@ -429,7 +429,7 @@ I piedini 1 e 8 sono di alimentazione, mentre vedremo la funzione di altri piedi
 
 ![NE555](../images/23_PorteLogiche/N555_2.jpeg){width=90%}
 
-La $V_{CC}$ viene posta a $6V$ per semplicità, in modo da calcolare facilemnte il **partitore di tensione** all'inizio dei circuito. Queste tensioni vanno in ingresso a degli operazionali, comandati da $TH$ e $TR$, entranti rispettivamente al pin 6 e 2. L'uscita di questi operazionali va in ingresso ad un **latch S-R**, che ha come ulteriore ingresso anche il $\overline{\text{Reset}}$, variabile attiva bassa entrante nel piedino 4. Questo $\overline{\text{Reset}}$ ha **priorità sulle variabili di comando** S ed R, e la S ha a sua volta priorità sulla R: questo vuol dire che la configurazione $S=1$, $R=1$ è permessa e porta l'uscita a $1$. L'uscita del latch $Q$ è sia diretta, quando passa dal BJT, che negata, quando passa dall'inverter. L'uscita diretta passa prima dal BJT perchè abbiamo necessita che essa eroghi almeno $100mA$, e il latch non è in grado di erogarla. Nel caso in cui $\overline{Q} = 1 \to Q = 0$, abbiamo un BJT saturo, che ci restituisce in uscita il valore logico $0$, confermando la correttezza del circuito.
+La $V_{CC}$ viene posta a $6V$ per semplicità, in modo da calcolare facilmente il **partitore di tensione** all'inizio dei circuito. Queste tensioni vanno in ingresso a degli operazionali, comandati da $TH$ e $TR$, entranti rispettivamente al pin 6 e 2. L'uscita di questi operazionali va in ingresso ad un **latch S-R**, che ha come ulteriore ingresso anche il $\overline{\text{Reset}}$, variabile attiva bassa entrante nel piedino 4. Questo $\overline{\text{Reset}}$ ha **priorità sulle variabili di comando** S ed R, e la S ha a sua volta priorità sulla R: questo vuol dire che la configurazione $S=1$, $R=1$ è permessa e porta l'uscita a $1$. L'uscita del latch $Q$ è sia diretta, quando passa dal BJT, che negata, quando passa dall'inverter. L'uscita diretta passa prima dal BJT perché abbiamo necessita che essa eroghi almeno $100mA$, e il latch non è in grado di erogarla. Nel caso in cui $\overline{Q} = 1 \to Q = 0$, abbiamo un BJT saturo, che ci restituisce in uscita il valore logico $0$, confermando la correttezza del circuito.
 
 ### Simbolo circuitale
 
@@ -445,12 +445,12 @@ Il seguente grafico riassume le uscite del dispositivo in funzione delle tension
 
 ### Circuito astabile con NE555
 
-#### Introduzione ai multiviibratori
+#### Introduzione ai multivibratori
 
 I circuiti multivibratori sono circuiti che si dividono in 3 sottofamiglie a seconda della loro funzione. Esse sono:
 
-* **Monostabile**: ha un solo stato stabile, e l'altro è instabile. Il circuito, portato sullo stato instabile, tende a tornare allo stato stabile. Il circuito è utilizzato per generare impulsi di durata variabile, e per questo motivo è utilizzato come timer.
-* **Astable**: ha due stati instabili, e il circuito tende a passare da uno all'altro. Il circuito è utilizzato per generare onde quadre, come **il clock**.
+* **Monostabile**: ha un solo stato stabile, e l'altro è instabile. Il circuito, portato sullo stato instabile, tende a tornare allo stato stabile. Il circuito è utilizzato per generare impulsi di durata variabile, e per questo motivo è utilizzato come timer;
+* **Astabile**: ha due stati instabili, e il circuito tende a passare da uno all'altro. Il circuito è utilizzato per generare onde quadre, come **il clock**;
 * **Bistabile**: ha due stati stabili, e passa da uno all'altro solo se viene comandato. Il circuito è utilizzato per memorizzare un valore, come **i flip-flop**.
 
 #### Circuito astabile
@@ -459,7 +459,7 @@ Un possibile circuito astabile costruito con il NE555 è il seguente:
 
 ![NE555](../images/23_PorteLogiche/astabile1.jpeg){width=50%}
 
-Le grandezze di interesse sono $V_u$ e $V_v$, e in particolare la loro variazione nel tempo. 
+Le grandezze di interesse sono $V_u$ e $V_v$, e in particolare la loro variazione nel tempo.
 
 #### Fasi di funzionamento
 
@@ -467,11 +467,11 @@ Dobbiamo dimostrare il fatto che questo sia effettivamente un circuito astabile,
 
 ##### Fase 1
 
-Abbiamo $Q = 1$, e contemporaneamente $\overline{Q} = 0$, con $D = HI$, ovvero *alta impedenza*, in quanto il BJT è interdetto. Il condensatore inizia una fase di carica esponenziale, e non scorre corrente del ramo con TH e TR: in questo momento il latch all'interno del'N555 si trova in fase di memorizzazione. Quando $V_u$ raggiunge $\frac{2}{3} V_{CC}$, il comparatore $TH$ si attiva, e $Q$ passa a $0$, commuto l'uscita poichè passo ad avere $S = 0$ e $R=1$, passando alla fase successiva.
+Abbiamo $Q = 1$, e contemporaneamente $\overline{Q} = 0$, con $D = HI$, ovvero *alta impedenza*, in quanto il BJT è interdetto. Il condensatore inizia una fase di carica esponenziale, e non scorre corrente del ramo con TH e TR: in questo momento il latch all'interno del'N555 si trova in fase di memorizzazione. Quando $V_u$ raggiunge $\frac{2}{3} V_{CC}$, il comparatore $TH$ si attiva, e $Q$ passa a $0$, commuto l'uscita poiché passo ad avere $S = 0$ e $R=1$, passando alla fase successiva.
 
 ##### Fase 2
 
-Come anticipato, abbimao $S=0$ e $R=1$ nel latch, che implica come uscita $Q = 0$ e $D = 0$. Il condensatore inizia una fase di scarica.
+Come anticipato, abbiamo $S=0$ e $R=1$ nel latch, che implica come uscita $Q = 0$ e $D = 0$. Il condensatore inizia una fase di scarica.
 
 ##### Andamento grafico
 
@@ -519,7 +519,7 @@ I dati sono:
 * $V_f2 = 0$
 * $\tau_2 = C\cdot R_B$
 
-Si noti come $R_A$ non sia presente perchè $V_{CC}$ è disattivato.
+Si noti come $R_A$ non sia presente perché $V_{CC}$ è disattivato.
 
 Sostituendo i dati nella formula, otteniamo:
 
@@ -527,19 +527,19 @@ $$T_2 = C\cdot R_B \cdot \ln(\frac{\frac{2}{3}V_{CC} - 0}{\frac{1}{3}V_{CC} - 0}
 
 $$\qquad$$
 
-#### Il duty-cycle
+#### Il duty cycle
 
-Conoscendo $T_1$ e $T_2$, possiamo calcolare il **duty-cycle**, ovvero il rapporto tra il tempo in cui l'uscita è alta e il periodo totale. Il periodo è dato da $T = T_1 + T_2$, per cui il duty-cycle è:
+Conoscendo $T_1$ e $T_2$, possiamo calcolare il **duty cycle**, ovvero il rapporto tra il tempo in cui l'uscita è alta e il periodo totale. Il periodo è dato da $T = T_1 + T_2$, per cui il duty-cycle è:
 
-$$\text{Duty Cicle} = \frac{T_1}{T} = \frac{T_1}{T_1 + T_2} = \frac{C\cdot (R_A + R_B) \cdot \ln(2)}{C\cdot (R_A + R_B) \cdot \ln(2) + C\cdot R_B \cdot \ln(2)} = \frac{R_A + R_B}{R_A + 2R_B}$$
+$$\text{Duty cycle} = \frac{T_1}{T} = \frac{T_1}{T_1 + T_2} = \frac{C\cdot (R_A + R_B) \cdot \ln(2)}{C\cdot (R_A + R_B) \cdot \ln(2) + C\cdot R_B \cdot \ln(2)} = \frac{R_A + R_B}{R_A + 2R_B}$$
 
-Notiamo immediatamente come il *duty cicle* non sia del 50%: l'unica possibilità per avere un valore simile ad esso, e che sia accettabile, sarebbe porre $R_B \gg R_A$
+Notiamo immediatamente come il *duty cycle* non sia del 50%: l'unica possibilità per avere un valore simile ad esso, e che sia accettabile, sarebbe porre $R_B \gg R_A$
 
 $$\qquad$$
 
 ## Oscillatore ad anello
 
-L'oscillatore ad anello è un semplie circuito logico, in cui vengono inseriti in cascata un numero dispari di inverter, come mostrato in figura:
+L'oscillatore ad anello è un semplice circuito logico, in cui vengono inseriti in cascata un numero dispari di inverter, come mostrato in figura:
 
 ![Oscillatore ad anello](../images/23_PorteLogiche/anello1.jpeg){width=80%}
 
@@ -555,4 +555,4 @@ Il grafico dell'andamento del segnale in uscita ad ogni inverter è il seguente:
 
 ![Oscillatore ad anello](../images/23_PorteLogiche/anello2.jpeg)
 
-Ognuna di queste onde ha un *duty cicle* del 50%, e hanno un ritardo di $2\tau$ rispetto all'inverter precedente. L'utilità del circuito è, oltre al generare un'onda quadrata, di poter misurare con precisione il rirardo $\tau$. Esso infatti è molto piccolo, e può essere problematico misurarlo con una sola porta logica, mentre con l'anello possiamo misurare il ritardo di $n$ porte logiche, che è molto più grande, e trovare il valore effettivo di $\tau$.
+Ognuna di queste onde ha un *duty cycle* del 50%, e hanno un ritardo di $2\tau$ rispetto all'inverter precedente. L'utilità del circuito è, oltre al generare un'onda quadrata, di poter misurare con precisione il ritardo $\tau$. Esso infatti è molto piccolo, e può essere problematico misurarlo con una sola porta logica, mentre con l'anello possiamo misurare il ritardo di $n$ porte logiche, che è molto più grande, e trovare il valore effettivo di $\tau$.

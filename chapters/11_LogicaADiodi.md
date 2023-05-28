@@ -19,6 +19,6 @@ Utilizziamo ora questa scala di valori per analizzare alcuni circuiti, utilizzan
 
 ## Le problematiche della logica a diodi
 
-Innanzitutto è necessaria molta corrente per alimentare i circuiti quando i diodi sono in conduzione, quando invece andrebbe limitata il più possibile. 
+Innanzitutto è necessaria molta corrente per alimentare i circuiti quando i diodi sono in conduzione, quando invece andrebbe limitata il più possibile.
 L'altro problema è la degradazione dei livelli logici quando vengono messi in cascata più circuiti logici, e ciò è dovuto alla non idealità  dei diodi, ovvero $V_{\gamma}\not = 0$. Potrei addirittura avere dei casi in cui un $1$ diventa un $0$.
 L'ultimo problema è che non è possibile costruire la porta NOT con i diodi. Quindi dovremo trovare altre tecnologie per realizzare i circuiti digitali.
