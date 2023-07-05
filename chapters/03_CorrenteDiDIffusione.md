@@ -11,12 +11,12 @@ Tracciamo dei grafici con concentrazione come ordinata:
 Ricordiamo che $n$ indica la concentrazione di elettroni liberi, e $p$ quella delle lacune, mentre $e$ sono gli elettroni e $h$ le lacune. Il grafico rappresenta lo spostamento di elettroni e lacune lungo in gradiente, e la corrente risultante dal fenomeno.
 Ricordando che $D_{N}$ rappresenta la **densità della corrente di diffusione**, calcoliamo la corrente di diffusione per gli elettroni:
 
-$$J_{N Diff} = (-q) D_{N} (-\frac{dn}{dx}) = q \cdot D_{N}\frac{dn}{dx}$$
+$$J_{N Diff} = (-q) D_{N} (-\frac{dn}{dx}) = q \cdot D_{N}\frac{dn}{dx} \to \text{corrente negativa}$$
 
 che implica una $J$ negativa.
 Allo stesso modo, calcoliamo la corrente di diffusione delle lacune:
 
-$$J_{P Diff} = (-q) D_{P} (-\frac{dp}{dx}) = q \cdot D_{P}\frac{dp}{dx}$$
+$$J_{P Diff} = (+q) D_{P} (-\frac{dp}{dx}) = - q \cdot D_{P}\frac{dp}{dx} \to \text{corrente positiva}$$
 
 ### Legame tra $D_{N}$ e $D_{P}$
 

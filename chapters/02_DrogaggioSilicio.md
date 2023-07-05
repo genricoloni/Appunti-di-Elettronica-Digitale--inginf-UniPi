@@ -55,10 +55,10 @@ I valori tipici per $N_{D}$ e $N_{A}$ sono compresi tra $10^{14} cm^{-3}$ e $10^
 - $N_{D}^{+}$: numero di atomi del gruppo $V$ che effettivamente donano un elettrone;
 - $N_{A}^{-}$: numero di atomi del gruppo $III$ che effettivamente ricevono un elettrone.
 
-Si noti come entrambi i valori siano delle **concentrazioni**, e in entrambi i casi il numero di elettroni liberi non è più uguale al numero di lacune. Chiameremo quindi i drogaggio, rispettivamente:
+Si noti come entrambi i valori siano delle **concentrazioni**, e in entrambi i casi il numero di elettroni liberi non è più uguale al numero di lacune. Chiameremo quindi il drogaggio, rispettivamente:
 
-- **Drogaggio N**, quando $N_{D} > N_{A}$, nel quale si parlerà di *portatore maggioritario*;
-- **Drogaggio P**, quando $N_{D} < N_{A}$, nel quale invece si parlerà di *portatore minoritario*.
+- **Drogaggio N**, quando $N_{D} > N_{A}$;
+- **Drogaggio P**, quando $N_{D} < N_{A}$.
 
 ## Calcolo di $p$ ed $n$
 
@@ -99,7 +99,7 @@ dove $f(T)$ è una funzione che dipende dalla temperatura. Andiamo a considerare
 
 ### Caso con Silicio intrinseco
 
-Abbiamo che $n = p = n{_i}$; sappiamo inoltre che l'aumento della temperatura T, e dunque l'aumento dell'energia termica, è sufficiente per rompere alcuni legami covalenti. Ciò porta all'incremento esponenziale di $n$ e $p$, che prevale dunque sull'incremento di $\mu_{n}$ e $\mu_{p}$: possiamo dunque affermare che $\sigma$ **aumenta con la temperatura**.
+Abbiamo che $n = p = n{_i}$; sappiamo inoltre che l'aumento della temperatura T, e dunque l'aumento dell'energia termica, è sufficiente per rompere alcuni legami covalenti. Ciò porta all'incremento esponenziale di $n$ e $p$, che prevale dunque sul decremento di $\mu_{n}$ e $\mu_{p}$: possiamo dunque affermare che $\sigma$ **aumenta con la temperatura**.
 
 ### Caso con Silicio drogato
 

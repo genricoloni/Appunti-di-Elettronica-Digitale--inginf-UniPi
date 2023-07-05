@@ -36,7 +36,7 @@ La caratteristica del diodo Zener è la seguente:
 
 ![Caratteristica del diodo Zener](../images/21_RegolatoriDITensione/tensione2.jpeg){width=40%}
 
-Collocando il punto di riposo molto in basso c'è un limite massimo di corrente che altrimenti porterebbe alla rottura dello stesso diodo; per questo motivo viene inserita una $R_S$ **molto piccola**.
+Collocando il punto di riposo molto in basso c'è un limite massimo di corrente che altrimenti porterebbe alla rottura dello stesso diodo; per questo motivo viene inserita una $R_S$ **molto grande**.
 
 ### Circuito con amplificatore
 
