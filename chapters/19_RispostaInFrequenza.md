@@ -196,7 +196,7 @@ La **funzione di trasferimento** del nostro sistema sarà definita come $H = \fr
 
 ![Funzione di trasferimento](./../images/19_RispostaInFrequenza/guadagno.png)
 
-Avremo quindi che $A$ è il **guadagno ad anello aperto**, mentre $\beta \cdot A$ è il **guadagno d'anello**, ed infine il **guadagno ad anello chiuso** dato da $A_f = \frac{A}{1 + \beta \cdot A}$.
+Avremo quindi che $A$ è il **guadagno ad anello aperto**, mentre $\beta \cdot A$ è il **guadagno d'anello**, ed infine il **guadagno ad anello chiuso** dato da $A_f = \frac{A}{1 - \beta \cdot A}$.
 
 Parleremo in generale di **reazione negativa** se $|A_f| < |A|$, mentre in caso contrario avremo una **reazione positiva**. Come anticipato, l'elettronica fa uso quasi esclusivamente di reazioni negative, che hanno come effetto quello di portare una diminuzione del guadagno. Sebbene questo possa sembrare un effetto negativo, in realtà è molto utile per **migliorare le prestazioni** del sistema. Guardiamo infatti questo esempio:
 

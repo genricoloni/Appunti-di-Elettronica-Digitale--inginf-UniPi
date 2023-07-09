@@ -28,7 +28,7 @@ Definiamo quindi $A_v = \frac{v_2}{v_s}$ come il **guadagno di tensione**. Simil
 
 Infine definiamo il **guadagno di potenza** come:
 
-$$A_p = \frac{Potenza sul carico}{Potenza in ingresso} = -\frac{v_2i_2}{v_si_1} = -A_vA_i$$
+$$A_p = \frac{\text{Potenza sul carico}}{\text{Potenza in ingresso}} = -\frac{v_2i_2}{v_si_1} = -A_vA_i$$
 
 Sviluppando ulteriormente la relazione, troviamo un risultato interessante:
 

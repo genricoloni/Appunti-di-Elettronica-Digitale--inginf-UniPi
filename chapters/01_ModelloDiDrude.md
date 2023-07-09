@@ -14,7 +14,7 @@ Vengono altresì considerati seguenti parametri:
 
 Prendendo in considerazione un singolo elettrone, posso tracciare il grafico $\frac{V_{elettrica}}{Tempo}$, dove $V_{elettrica}$ è la velocità dovuta dal campo elettrico, posso fare alcune osservazioni:
 
-![Grafico Vecolità-Tempo di un elettrone](../images/01_ModelloDiDrude/graficoVe-t.png){width=350px}
+![Grafico Velocità-Tempo di un elettrone](../images/01_ModelloDiDrude/graficoVe-t.png){width=350px}
 
 Notiamo innanzitutto l'interruzione brusca del movimento degli elettroni: ciò è dovuto agli urti degli elettroni contro gli atomo presenti nel reticolo; essi sono completamente casuali, come è casuale la direzione dell'elettrone dopo di esso. La velocità è lineare a causa dell'azione del campo Elettrico $\vec{E}$ che, come detto, è costante. Ricavando il valor medio della velocità (nel grafico la linea orizzontale) si ottiene la **Velocità di Drift**. Essa avrà direzione **opposta** a quella del campo elettrico e, secondo il modello di Drude, si calcola a partire dal campo elettrico tramite la formula: $V_{d} = \mu \cdot E$, dove $\mu$ è la **mobilità** degli elettroni. Considerando i vettori, otterrò infine $\vec{V_{d}} = - \mu \cdot \vec{E}$
 

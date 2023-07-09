@@ -83,7 +83,7 @@ Tra i due terminali di ingresso è presente una resistenza $R_{IN}$, mentre il c
 
 ![Circuito equivalente](../images/20_AmplificatoriDifferenziali/ope3.jpeg){ width=70% }
 
-É opportuno ricordare che i **terminali di ingresso non sono connessi a ground**, e dunque non hanno *ground* come tensione di riferimento.
+É opportuno ricordare che i **terminali di ingresso non sono connessi a ground**, e dunque non hanno _ground_ come tensione di riferimento.
 
 $$\qquad$$
 
@@ -280,4 +280,4 @@ che produce all'uscita una funzione rampa:
 ![Risposta all'impulso dell'integratore di Miller](../images/20_AmplificatoriDifferenziali/Miller2.jpeg){width=50%}
 
 Ignorando, per un momento, la saturazione e i limiti fisici imposti dalla tensione di alimentazione, l'uscita tenderebbe ad $\infty$, per cui il sistema **non è stabile BIBO**.
-Nel caso reale però, le correnti in input dell'operazionale non possono essere nulle, per cui andranno a *cercare il condensatore*, rendendo il sistema stabile.
+Nel caso reale però, le correnti in input dell'operazionale non possono essere nulle, per cui andranno a _cercare il condensatore_, rendendo il sistema stabile.

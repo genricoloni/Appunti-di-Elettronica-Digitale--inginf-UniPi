@@ -10,7 +10,7 @@ E' un dispositivo di importanza rilevante perché è *unidirezionale*, ovvero pe
 
 ## Analisi senza sollecitazioni esterne
 
-Analizziamo $V_{AK}$ e $I_{AK}$, ovvero la tensione e la corrente che scorrono tra anodo e catodo. Senza sollecitazioni esterne, questo non possono che essere **nulle**. Verifichiamo la correttezza di questa ipotesi: consideriamo di essere a temperatura a ambiente, che $N_{A} = P_{p} = 10^{17} cm^{-3}$, $n_{p} = 10^{3} cm^{-3}$, $n{_N} = 10^{16}cm^{3}$ e $P_{n} = 10^{4} cm^{-3}$.
+Analizziamo $V_{AK}$ e $I_{AK}$, ovvero la tensione e la corrente che scorrono tra anodo e catodo. Senza sollecitazioni esterne, questo non possono che essere **nulle**. Verifichiamo la correttezza di questa ipotesi: consideriamo di essere a temperatura a ambiente, che $N_{A} = P_{p} = 10^{17} cm^{-3}$, $n_{p} = 10^{3} cm^{-3}$, $n_{N} = 10^{16}cm^{3}$ e $P_{n} = 10^{4} cm^{-3}$.
 
 ![Grafico della concentrazione di elettroni e lacune in funzione alla loro posizione nella giunzione](../images/04_GiunzionePN/graficoPN.png){width=60%}
 
@@ -110,7 +110,7 @@ Riassumendo:
 
 La corrente che scorre nel diodo è detta $I_{AK}$, viene scelta in verso positivo da P verso N, ed è data dall'equazione del **Modello di Shockley**:
 
-$$I_{AK} = I_S ( e^{\frac{V_D}{\eta V_T}})$$
+$$I_{AK} = I_S ( e^{\frac{V_D}{\eta V_T}} - 1)$$
 
 dove:
 

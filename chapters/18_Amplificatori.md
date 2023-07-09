@@ -166,7 +166,7 @@ Possiamo fare alcune osservazioni:
 
 1. $A_v$ è positiva, per cui i segnali in ingresso ed uscita avranno lo stesso segno, ed è ciò che ci aspettiamo da una configurazione **non invertente**;
 2. $A_v < 1$ sempre, per costruzione;
-3. Se $h_{ie} << (R_E||R_L)(h_{fe} + 1)$, allora $A_v \approx 1$. Questo caso è chiamato **configurazione a inseguitore di emettitore**, in quanto l'amplificazione è fatta con un fattore quasi unitario, grazie al quale l'uscita *segue* l'ingresso.
+3. Se $h_{ie} << (R_E||R_L)(h_{fe} + 1)$, allora $A_v \approx 1$. Questo caso è chiamato **configurazione a inseguitore di emettitore**, in quanto l'amplificazione è fatta con un fattore quasi unitario, grazie al quale l'uscita _segue_ l'ingresso.
 
 ## Amplificatore a source comune
 
@@ -287,7 +287,7 @@ Notiamo come la configurazione in esame sia **non invertente**, e ciò è ravvis
 
 ## Amplificatori multistadio
 
-Riuscire a soddisfare tutti i requisiti di un progetto utilizzando un solo amplificatore può essere difficile, per cui è pratica comune **collegare in cascata** due o più amplificatori, in modo da combinare le loro caratteristiche nel modo più vantaggioso possibile per la rete in oggetto. Abbiamo usato la parola *combinare* e non *moltiplicare* perché solo in specifiche condizioni è possibile moltiplicare tra loro i guadagni dei singoli stadi, mentre in situazioni normali dobbiamo considerare l'interazione tra i singoli stadi, che renderanno il guadagno minore di quanto ci si possa aspettare.
+Riuscire a soddisfare tutti i requisiti di un progetto utilizzando un solo amplificatore può essere difficile, per cui è pratica comune **collegare in cascata** due o più amplificatori, in modo da combinare le loro caratteristiche nel modo più vantaggioso possibile per la rete in oggetto. Abbiamo usato la parola _combinare_ e non _moltiplicare_ perché solo in specifiche condizioni è possibile moltiplicare tra loro i guadagni dei singoli stadi, mentre in situazioni normali dobbiamo considerare l'interazione tra i singoli stadi, che renderanno il guadagno minore di quanto ci si possa aspettare.
 
 Vedendo gli amplificatori come delle scatole, la struttura di un amplificatore multistadio può essere schematizzata come segue:
 

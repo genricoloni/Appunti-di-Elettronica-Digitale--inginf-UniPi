@@ -16,11 +16,11 @@ Chiamerò $n_{i}$ la concentrazione di elettroni liberi, e posso calcolare quest
 $$n{_i}{^2} = B \cdot T^{3} \cdot e ^{-\frac{E_{G}}{K_{B} \cdot T}}$$
 
 dove $B$ è una costante dipendente dal materiale: nel Silicio vale $1.08 \cdot 10^{31} K^{-3}cm^{-6}$.
-$E_{G}$ è detta *energia di Gap* ed è la quantità di energia necessaria per allontanare un elettrone dal suo legame covalente. Nel Silicio vale $1.12 eV$, mentre $K_{B}$ è la costante di Boltzmann che vale $8.617 \cdot 10^{-5} \frac{eV}{K}$. A $T_{ambiente}$, quindi, $n_{i} \approx 10^{10} cm^{-3}$. Notiamo come il parametro che che fa effettivamente variare questo valore è la Temperatura, che ha andamento esponenziale. In conclusione, sapendo che nel Silicio ci sono $5\cdot10^{22} \frac{atomi}{cm^{3}}$, e dunque un numero di legami covalenti pari a $2\cdot10^{23}$, a temperatura ambiente abbiamo appena un legame rotto ogni $10^{13}$
+$E_{G}$ è detta **energia di Gap** ed è la quantità di energia necessaria per allontanare un elettrone dal suo legame covalente. Nel Silicio vale $1.12 eV$, mentre $K_{B}$ è la costante di Boltzmann che vale $8.617 \cdot 10^{-5} \frac{eV}{K}$. A $T_{ambiente}$, quindi, $n_{i} \approx 10^{10} cm^{-3}$. Notiamo come il parametro che che fa effettivamente variare questo valore è la Temperatura, che ha andamento esponenziale. In conclusione, sapendo che nel Silicio ci sono $5\cdot10^{22} \frac{atomi}{cm^{3}}$, e dunque un numero di legami covalenti pari a $2\cdot10^{23}$, a temperatura ambiente abbiamo appena un legame rotto ogni $10^{13}$
 
 ### Il concetto di lacuna
 
-Per effetto di un campo elettrico, un elettrone impegnato in un legame può *saltare* da un legame all'altro, eventualmente per coprire un buco lasciato da un elettrone che è riuscito a liberarsi dal legame. Posso considerare il buco dovuto al legame interrotto come una **carica positiva**, e la chiamerò **lacuna**: avrà una carica uguale ed opposta rispetto a quella dell'elettrone, e si muoverà in direzione concorde al campo elettrico.
+Per effetto di un campo elettrico, un elettrone impegnato in un legame può _saltare_ da un legame all'altro, eventualmente per coprire un buco lasciato da un elettrone che è riuscito a liberarsi dal legame. Posso considerare il buco dovuto al legame interrotto come una **carica positiva**, e la chiamerò **lacuna**: avrà una carica uguale ed opposta rispetto a quella dell'elettrone, e si muoverà in direzione concorde al campo elettrico.
 
 ![Lacune ed elettroni in un reticolo](../images/02_DrogaggioSilicio/lacuna.jpeg){width=250px}
 
@@ -30,7 +30,7 @@ che lo renderebbe un cattivo conduttore. Questo ci porta all'introduzione del **
 
 ## Il Silicio drogato
 
-Un materiale, in genere, si intende *drogato* quando sostituiamo alcuni suoi atomi dal reticolo intrinseco, inserendo altri atomi appartenenti a gruppi diversi. Con il Silicio è possibile effettuare due tipi di drogaggio: sostituzione con atomi del gruppo $V$, o con atomi del gruppo $III$.
+Un materiale, in genere, si intende _drogato_ quando sostituiamo alcuni suoi atomi dal reticolo intrinseco, inserendo altri atomi appartenenti a gruppi diversi. Con il Silicio è possibile effettuare due tipi di drogaggio: sostituzione con atomi del gruppo $V$, o con atomi del gruppo $III$.
 
 ### Drogaggio con atomi del gruppo $V$
 
@@ -38,7 +38,7 @@ Gli elementi più comuni con il quale viene effettuato il drogaggio sono l'Arsen
 
 ![Reticolo di Silicio drogato con atomi del $V$ gruppo](../images/02_DrogaggioSilicio/SilicioP.jpeg){width=250px}
 
-Questo elettrone non coinvolto avrà bisogno di **pochissima** energia per muoversi, e si aggiunge agli elettroni liberi generati termicamente. Non rompendo alcun legame, questi elettroni non danno vita a nuove lacune, sbilanciando quindi il numero di lacune ed elettroni liberi. Gli atomi del gruppo $V$ sono detti *donatori* perché appunto 'donano' un elettrone nel reticolo, e diventano degli ioni positivi; la loro concentrazione viene indicata con $N_{D}$.
+Questo elettrone non coinvolto avrà bisogno di **pochissima** energia per muoversi, e si aggiunge agli elettroni liberi generati termicamente. Non rompendo alcun legame, questi elettroni non danno vita a nuove lacune, sbilanciando quindi il numero di lacune ed elettroni liberi. Gli atomi del gruppo $V$ sono detti _donatori_ perché appunto 'donano' un elettrone nel reticolo, e diventano degli ioni positivi; la loro concentrazione viene indicata con $N_{D}$.
 
 ### Drogaggio con atomi del gruppo $III$
 
@@ -46,7 +46,7 @@ L'elemento più comuni con il quale viene effettuato questo tipo di drogaggio è
 
 ![Formazione di una lacuna con Silicio drogato con atomi del gruppo $III$](../images/02_DrogaggioSilicio/silicioN.jpeg)
 
-Questa lacuna verrà colmata da un altro elettrone che romperà il suo legame covalente. Gli atomi del gruppo $III$ sono detti *accettori* perché appunto 'accettano' un elettrone nel reticolo, e diventano degli ioni negativi; la loro concentrazione viene indicata con $N_{A}$.
+Questa lacuna verrà colmata da un altro elettrone che romperà il suo legame covalente. Gli atomi del gruppo $III$ sono detti _accettori_ perché appunto 'accettano' un elettrone nel reticolo, e diventano degli ioni negativi; la loro concentrazione viene indicata con $N_{A}$.
 
 ## Il drogaggio
 
@@ -71,7 +71,7 @@ dove $q$ è la carica dell'elettrone. Ricordiamo inoltre la legge di azione di m
 ### Calcolo nel caso di drogaggio N
 
 Per ipotesi abbiamo $N_{A} = 0$, $N_{D}^{+} = N_{D}$ e $n \approx N_{D}$, dunque il numero di elettroni liberi è circa uguale al numeri di quelli drogati: risulterà dunque che $p = \frac{n{_i}{^2}}{N_{D}}$. Sapendo che $n_{i}^{2} = 10^{20} cm^{-3}$, ottengo che $p = 10^{2} cm^{-3}$ e $n = 10^{18} cm^{-3}$.
-Confrontando questo risultato con quello del Silicio intrinseco, notiamo che la generazione termica continua ovviamente ad essere presente, ma viene aiutata in modo significativo dal drogaggio: ci sono molti più elettroni liberi che possono riempire più facilmente le lacune. Gli elettroni che predominano, in questo caso $n$, vengono detto *maggioritari*, mentre in questo caso i $p$ saranno *minoritari*: abbiamo un semiconduttore di tipo $N$ proprio a causa dello sbilanciamento a favore degli elettroni.
+Confrontando questo risultato con quello del Silicio intrinseco, notiamo che la generazione termica continua ovviamente ad essere presente, ma viene aiutata in modo significativo dal drogaggio: ci sono molti più elettroni liberi che possono riempire più facilmente le lacune. Gli elettroni che predominano, in questo caso $n$, vengono detti **maggioritari**, mentre in questo caso i $p$ saranno **minoritari**: abbiamo un semiconduttore di tipo $N$ proprio a causa dello sbilanciamento a favore degli elettroni.
 
 ### Calcolo nel caso di drogaggio P
 
